@@ -178,6 +178,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 .verdict.bad { background: var(--bad-soft); color: var(--bad); }
 .verdict.neutral { background: var(--sunk); color: var(--fg); }
 .verdict b { font-size: 16px; }
+.answer-text { white-space: pre-line; color: var(--fg); }
 .expl { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
 .expl summary { cursor: pointer; font-weight: 500; color: var(--ink); }
 .expl .body { white-space: pre-line; font-size: 14px; color: var(--fg); margin-top: 8px; overflow-wrap: anywhere; line-height: 1.75; }
@@ -504,12 +505,13 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     let matchBlock = "";
     if (q.type === "match" && !isExam) {
       matchBlock = checked || s.revealMatch === id
-        ? `<div class="verdict neutral"><b>參考答案</b><span>請比對你的配對結果，再選擇自評。</span></div><div class="figs" style="margin-top:12px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="第 ${id} 題參考答案" loading="lazy">`).join("")}</div>
+        ? `<div class="verdict neutral"><b>參考答案</b>${q.answerText ? `<span class="answer-text">${esc(q.answerText)}</span>` : `<span>請比對你的配對結果，再選擇自評。</span>`}</div><div class="figs" style="margin-top:12px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 參考答案" loading="lazy">`).join("")}</div>
            ${checked ? `<div class="verdict ${s.checked[id] ? "ok" : "bad"}"><b>自評：${s.checked[id] ? "答對" : "答錯"}</b></div>` : `<div class="actions"><button class="btn" data-self="1" type="button">我答對了</button><button class="btn danger" data-self="0" type="button">我答錯了</button></div>`}`
         : `<div class="actions" style="margin-top:0"><button class="btn ghost" id="revealMatch" type="button">顯示參考答案</button><span class="note">先在紙上或心中完成配對，再看答案。</span></div>`;
     }
     const expl = reveal || (q.type === "match" && (checked || s.revealMatch === id))
-      ? `<details class="expl" ${S.settings.openExpl ? "open" : ""}><summary>解析${q.explanation ? "（原文）" : ""}</summary><div class="body">${q.explanation ? esc(q.explanation) : "本題題庫未附解析。"}</div></details>` : "";
+      ? `<details class="expl" ${S.settings.openExpl ? "open" : ""}><summary>${q.source === "IRCA" ? "說明" : "解析" + (q.explanation ? "（原文）" : "")}</summary><div class="body">${q.explanation ? esc(q.explanation) : "本題題庫未附解析。"}</div></details>`
+        + (q.type !== "match" && q.answerImages.length ? `<details class="expl"><summary>原始題目截圖</summary><div class="figs" style="margin-top:8px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 原始截圖" loading="lazy">`).join("")}</div></details>` : "") : "";
 
     const last = s.idx === s.ids.length - 1;
     const primary = isExam

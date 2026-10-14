@@ -1,6 +1,6 @@
 # ISO/IEC 27001 Lead Auditor 學習測驗網站
 
-以 `ISO-IEC-27001-Lead-Auditor-CN V15.35.pdf`（368 題）為題庫的互動練習網站，純靜態 HTML，不需後端。
+以 `ISO-IEC-27001-Lead-Auditor-CN V15.35.pdf`（368 題）與 `IRCA 模擬試題.pdf`（40 題，排除 3 題重複後收錄 37 題）為題庫的互動練習網站，純靜態 HTML，不需後端。
 
 ## 功能
 
@@ -25,3 +25,12 @@ python3 tools/parse_pdf.py "ISO-IEC-27001-Lead-Auditor-CN V15.35.pdf" docs
 ```
 
 產出 `docs/questions.json`、`docs/questions.js` 與 `docs/img/`（題目圖片）。
+
+`IRCA 模擬試題.pdf` 為投影片截圖，無法直接擷取文字，題目已人工轉錄於 `tools/irca_questions.json`，
+原始投影片圖片為 `docs/img/irca_XX.jpg`。標記 `duplicateOf` 的題目與 V15.35 重複，建置時會略過：
+
+| IRCA 題號 | 重複的 V15.35 題號 |
+|---|---|
+| 11（稽核資訊收集流程排序） | 189 |
+| 12（稽核員個人特質配對） | 261 |
+| 28（外部議題，選四項） | 212 |
