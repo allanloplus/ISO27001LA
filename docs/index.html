@@ -415,6 +415,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <button class="mode" data-mode="unseen" type="button" ${answered >= QS.length ? "disabled" : ""}><h3>未練習題目 <em>${QS.length - answered}</em></h3><p>只出還沒作答過的題目。</p></button>
         <button class="mode" data-mode="wrong" type="button" ${wrong ? "" : "disabled"}><h3>錯題複習 <em>${wrong}</em></h3><p>最近一次答錯的題目；答對後自動移出錯題本。</p></button>
         <button class="mode" data-mode="flag" type="button" ${flags.size ? "" : "disabled"}><h3>標記題目 <em>${flags.size}</em></h3><p>作答時按「標記」收藏的題目。</p></button>
+        <button class="mode" data-mode="doubt" type="button"><h3>答案疑義題 <em>${QS.filter(q => q.allanDoubt).length}</em></h3><p>顧問講解中註記「題庫答案可能有誤」的題目，適合考前釐清觀念。</p></button>
         <button class="mode" data-mode="scenario" type="button"><h3>情境題專練 <em>${QS.filter(q => q.stem.length >= 360).length}</em></h3><p>長篇情境（Scenario）題，練習閱讀判斷。</p></button>
       </div>
 
@@ -448,6 +449,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <p class="note" id="kwNote">題型與來源勾選會套用到上方所有練習模式。</p>
       </div>
 
+      <p class="note" style="margin-top:28px">Allan Lo 顧問講解與阿拉蕾助教台詞由 AI 協助撰寫初稿；講解一律依題庫答案說明，若與標準有出入，會以「答案疑義註記」標示。</p>
       <h2>資料管理</h2>
       <div class="row"><button class="btn danger" id="resetBtn" type="button">清除作答紀錄</button><span class="note">清除後錯題本、標記與統計都會歸零。</span></div>
     `;
@@ -466,6 +468,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
       if (m === "unseen") { ids = QS.filter(q => f(q) && !S.stats[q.id]).map(q => q.id); title = "未練習題目"; }
       if (m === "wrong") { ids = wrongIds().filter(id => f(BY_ID.get(id))); title = "錯題複習"; }
       if (m === "flag") { ids = QS.filter(q => f(q) && flags.has(q.id)).map(q => q.id); title = "標記題目"; }
+      if (m === "doubt") { ids = QS.filter(q => f(q) && q.allanDoubt).map(q => q.id); title = "答案疑義題"; }
       if (m === "scenario") { ids = QS.filter(q => f(q) && q.stem.length >= 360).map(q => q.id); title = "情境題專練"; }
       if (!ids.length) { app.querySelector("#kwNote").textContent = "目前的題型篩選下沒有題目，請調整勾選。"; return; }
       startPractice(ids, title, m, start);
