@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ISO 27001 LA 題庫練習</title>
+<title>ISO/IEC 27001 知識能力自我挑戰</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -239,6 +239,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   .card { padding: 16px; }
   .result-head { grid-template-columns: minmax(0, 1fr); justify-items: start; }
   .brand span { display: none; }
+  .brand b { font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -246,7 +247,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 <body>
 <header class="top">
   <div class="wrap">
-    <button class="brand" id="homeBtn" type="button"><b>ISO/IEC 27001 LA</b><span id="brandSub">V15.35 + IRCA 模擬試題</span></button>
+    <button class="brand" id="homeBtn" type="button"><b>ISO/IEC 27001知識能力自我挑戰</b><span id="brandSub">V15.35 + IRCA 模擬試題</span></button>
     <nav>
       <button class="chip-btn" id="themeBtn" type="button">深色／淺色</button>
     </nav>
@@ -394,8 +395,8 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     app.innerHTML = `
       <section class="hero hero-duo">
         <div>
-          <div class="eyebrow">ISO/IEC 27001 Lead Auditor · 中文題庫</div>
-          <h1>主導稽核員考前練習</h1>
+          <div class="eyebrow">ISO/IEC 27001 · ISMS 稽核 · 中文題庫</div>
+          <h1>ISMS Auditor知識測驗</h1>
           <p class="lede">共 ${QS.length} 題（V15.35 題庫 ${srcCnt("V15.35")} 題、IRCA 模擬試題 ${srcCnt("IRCA")} 題）：單選 ${cnt("single")}、複選 ${cnt("multi")}、配對／排序 ${cnt("match")}（看參考答案後自評）。每題答完由 Allan Lo 顧問講解，阿拉蕾助教一路陪你練習。作答紀錄只存在這個瀏覽器。</p>
           ${araleSay(homeGreeting(answered, acc, tot, wrong))}
         </div>
