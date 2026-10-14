@@ -247,7 +247,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 <body>
 <header class="top">
   <div class="wrap">
-    <button class="brand" id="homeBtn" type="button"><b>ISO/IEC 27001知識能力自我挑戰</b><span id="brandSub">V15.35 + IRCA 模擬試題</span></button>
+    <button class="brand" id="homeBtn" type="button"><b>ISO/IEC 27001知識能力自我挑戰</b></button>
     <nav>
       <button class="chip-btn" id="themeBtn" type="button">深色／淺色</button>
     </nav>
@@ -427,7 +427,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <div class="field">時間（分鐘）<input id="exT" type="number" min="5" max="300" value="${set.exT || 180}"></div>
           <div class="field">及格分數（%）<input id="exP" type="number" min="1" max="100" value="${set.exP || 70}"></div>
         </div>
-        <p class="note">依「查題」區的題型與來源勾選，隨機抽取單選與複選題（配對題需自評，不列入模擬考）。考試中不顯示答案，交卷後一次評分；複選題須全部選對才給分。預設 80 題、180 分鐘、70% 及格，可依需要調整。</p>
+        <p class="note">依「查題」區的題型勾選，隨機抽取單選與複選題（配對題需自評，不列入模擬考）。考試中不顯示答案，交卷後一次評分；複選題須全部選對才給分。預設 80 題、180 分鐘、70% 及格，可依需要調整。</p>
         <div><button class="btn" id="startExam" type="button">開始模擬考</button></div>
       </div>
 
@@ -443,11 +443,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <label><input type="checkbox" id="tMatch" checked> 配對</label>
         </div>
         <div class="row">
-          <label><input type="checkbox" id="sV15" checked> V15.35 題庫</label>
-          <label><input type="checkbox" id="sIRCA" checked> IRCA 模擬試題</label>
           <label><input type="checkbox" id="optShuffle" ${set.shuffleOpts ? "checked" : ""}> 練習時打亂選項順序</label>
         </div>
-        <p class="note" id="kwNote">題型與來源勾選會套用到上方所有練習模式。</p>
+        <p class="note" id="kwNote">題型勾選會套用到上方所有練習模式。</p>
       </div>
 
       <p class="note" style="margin-top:28px">Allan Lo 顧問講解與阿拉蕾助教台詞由 AI 協助撰寫初稿；講解一律依題庫答案說明，若與標準有出入，會以「答案疑義註記」標示。</p>
@@ -456,8 +454,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     `;
     const typeFilter = () => {
       const allow = { single: tSingle.checked, multi: tMulti.checked, match: tMatch.checked };
-      const srcOk = { "V15.35": app.querySelector("#sV15").checked, "IRCA": app.querySelector("#sIRCA").checked };
-      return q => allow[q.type] && srcOk[q.source];
+      return q => allow[q.type];
     };
     const tSingle = app.querySelector("#tSingle"), tMulti = app.querySelector("#tMulti"), tMatch = app.querySelector("#tMatch");
     app.querySelector("#optShuffle").onchange = e => { S.settings.shuffleOpts = e.target.checked; store.save(); };
@@ -494,7 +491,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     app.querySelector("#startExam").onclick = () => {
       const f = typeFilter();
       const pool = QS.filter(q => q.type !== "match" && f(q));
-      if (pool.length < 5) { app.querySelector("#kwNote").textContent = "目前的題型與來源篩選下題目不足，請調整勾選。"; return; }
+      if (pool.length < 5) { app.querySelector("#kwNote").textContent = "目前的題型篩選下題目不足，請調整勾選。"; return; }
       const n = Math.min(pool.length, Math.max(5, +app.querySelector("#exN").value || 80));
       const t = Math.min(300, Math.max(5, +app.querySelector("#exT").value || 180));
       const p = Math.min(100, Math.max(1, +app.querySelector("#exP").value || 70));
