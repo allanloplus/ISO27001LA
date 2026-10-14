@@ -345,6 +345,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     if (s.mode === "exam") {
       if (s.idx === s.ids.length - 1) return { img: "explain", text: "這是最後一題了！交卷前看看左邊題號，沒有變灰的就是還沒作答的題目。" };
       if (q.type === "multi") return { img: "explain", text: `這題要選 ${q.answer.length} 項，全部選對才給分喔。` };
+      if (q.dnd) return { img: "explain", text: "把選項拖到空格（或先點選項再點空格），每一格都要填對才給分喔。" };
       if (neg) return { img: "surprised", text: "注意！這題問的是「否定」的選項，別看反了。" };
       return null;
     }
@@ -365,8 +366,12 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     return `<div class="coach allan"><img class="ava" src="img/chars/allan-${img}.jpg" alt="Allan Lo"><div><div class="who">Allan Lo 顧問講解 <small>· 考題檢討</small></div><div class="say">${esc(q.allan)}</div>${q.allanDoubt ? `<div class="doubt"><b>答案疑義註記：</b>${esc(q.allanDoubt)}</div>` : ""}</div></div>`;
   }
   /* ---------- 拖拉作答 ---------- */
-  const dndKind = q => q.dnd.layout === "sentence" ? "填空題" : q.dnd.rows.some(r => /^\d/.test(r.label)) ? "排序題" : "配對題";
+  const dndKind = q => q.dnd.layout === "sentence" ? "填空題" : q.dnd.rows.some(r => /^\d/.test(r.label)) || /順序|排序/.test(q.stem) ? "排序題" : "配對題";
   const dndBlanks = q => q.dnd.layout === "sentence" ? q.dnd.segments.filter(x => typeof x === "object").map(x => x.blank) : q.dnd.rows.filter(r => r.answer !== null).map(r => r.answer);
+  const hasAnswer = (s, id) => { const a = s.answers[id] || []; return BY_ID.get(id).dnd ? a.some(v => v !== null) : a.length > 0; };
+  const isRight = (s, q) => q.dnd
+    ? dndBlanks(q).every((a, i) => { const st = s.answers[q.id] || []; return st[i] !== null && st[i] !== undefined && q.dnd.pool[st[i]] === a; })
+    : sameSet(s.answers[q.id] || [], q.answer);
   function dndState(s, q) {
     const n = dndBlanks(q).length;
     if (!s.answers[q.id] || s.answers[q.id].length !== n) s.answers[q.id] = Array(n).fill(null);
@@ -534,7 +539,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <div class="field">時間（分鐘）<input id="exT" type="number" min="5" max="300" value="${set.exT || 180}"></div>
           <div class="field">及格分數（%）<input id="exP" type="number" min="1" max="100" value="${set.exP || 70}"></div>
         </div>
-        <p class="note">依「查題」區的題型勾選，隨機抽取單選與複選題（配對題需自評，不列入模擬考）。考試中不顯示答案，交卷後一次評分；複選題須全部選對才給分。預設 80 題、180 分鐘、70% 及格，可依需要調整。</p>
+        <p class="note">依「查題」區的題型勾選，隨機抽取單選、複選與配對／填空／排序題。考試中不顯示答案，交卷後一次評分；複選題須全部選對、配對類題目每一格都填對才給分。預設 80 題、180 分鐘、70% 及格，可依需要調整。</p>
         <div><button class="btn" id="startExam" type="button">開始模擬考</button></div>
       </div>
 
@@ -598,7 +603,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     app.querySelector("#kw").onkeydown = e => { if (e.key === "Enter") doSearch(); };
     app.querySelector("#startExam").onclick = () => {
       const f = typeFilter();
-      const pool = QS.filter(q => q.type !== "match" && f(q));
+      const pool = QS.filter(q => (q.type !== "match" || q.dnd) && f(q));
       if (pool.length < 5) { app.querySelector("#kwNote").textContent = "目前的題型篩選下題目不足，請調整勾選。"; return; }
       const n = Math.min(pool.length, Math.max(5, +app.querySelector("#exN").value || 80));
       const t = Math.min(300, Math.max(5, +app.querySelector("#exT").value || 180));
@@ -659,7 +664,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     const c = ["cell"];
     if (i === session.idx) c.push("cur");
     if (flags.has(id)) c.push("flag");
-    if (session.mode === "exam" && !session.finished) { if ((session.answers[id] || []).length) c.push("done"); }
+    if (session.mode === "exam" && !session.finished) { if (hasAnswer(session, id)) c.push("done"); }
     else if (session.checked[id] !== undefined) c.push(session.checked[id] ? "ok" : "bad");
     return c.join(" ");
   }
@@ -672,9 +677,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     const reveal = !isExam && (checked || s.finished);
     const sel = s.answers[id] || [];
     const { context, ask: askText } = splitStem(q.stem);
-    const doneCount = isExam ? s.ids.filter(x => (s.answers[x] || []).length).length : Object.keys(s.checked).length;
+    const doneCount = isExam ? s.ids.filter(x => hasAnswer(s, x)).length : Object.keys(s.checked).length;
 
-    const optsHtml = q.dnd && !isExam ? dndHtml(q, s) : q.type === "match" ? "" : `<div class="opts" role="${q.type === "multi" ? "group" : "radiogroup"}">` + s.order[id].map(k => {
+    const optsHtml = q.dnd ? dndHtml(q, s) : q.type === "match" ? "" : `<div class="opts" role="${q.type === "multi" ? "group" : "radiogroup"}">` + s.order[id].map(k => {
       const o = q.options.find(o => o.key === k);
       const isSel = sel.includes(k), isAns = q.answer.includes(k);
       let cls = "opt" + (q.type === "multi" ? " multi" : "");
@@ -713,7 +718,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 
     const last = s.idx === s.ids.length - 1;
     const primary = isExam
-      ? (last ? `<button class="btn" id="submitExam" type="button">交卷</button>` : `<button class="btn" id="next" type="button">下一題</button>`)
+      ? (last ? `<button class="btn" id="submitExam" type="button">交卷</button>` : `<button class="btn" id="next" type="button">下一題</button>`) + (q.dnd ? `<button class="btn ghost" id="dndReset" type="button">重新作答</button>` : "")
       : q.dnd && !checked ? `<button class="btn" id="check" type="button" ${dndState(s, q).some(v => v !== null) ? "" : "disabled"}>確認答案</button><button class="btn ghost" id="dndReset" type="button">重新作答</button>`
       : q.type === "match" ? `<button class="btn" id="next" type="button" ${last ? "disabled" : ""}>下一題</button>`
       : checked || s.finished ? `<button class="btn" id="next" type="button" ${last ? "disabled" : ""}>下一題</button>`
@@ -769,7 +774,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     on("#backResult", renderResult);
     on("#drawer", () => app.querySelector("#index").classList.toggle("collapsed"));
     on("#revealMatch", () => { s.revealMatch = id; renderQuiz(); });
-    if (q.dnd && !isExam && !checked) bindDnd(q, s);
+    if (q.dnd && !checked && !s.finished) bindDnd(q, s);
     app.querySelectorAll("[data-self]").forEach(b => b.onclick = () => {
       const ok = b.dataset.self === "1"; s.checked[id] = ok; record(id, ok); react(ok); renderQuiz();
     });
@@ -819,24 +824,26 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   }
   function confirmSubmit() {
     const s = session;
-    const blank = s.ids.filter(x => !(s.answers[x] || []).length).length;
+    const blank = s.ids.filter(x => !hasAnswer(s, x)).length;
     ask(blank ? `還有 ${blank} 題未作答，確定交卷？` : "確定交卷？", "交卷", () => finishExam(false));
   }
   function finishExam(timeout) {
     const s = session; stopTimer();
     s.finished = true; s.timeout = timeout; s.usedSec = Math.round((Math.min(Date.now(), s.deadline) - s.startedAt) / 1000);
-    s.ids.forEach(id => { const ok = sameSet(s.answers[id] || [], BY_ID.get(id).answer); s.checked[id] = ok; record(id, ok); });
+    s.ids.forEach(id => { const ok = isRight(s, BY_ID.get(id)); s.checked[id] = ok; record(id, ok); });
     renderResult();
   }
   function allanResult(s, pct, pass) {
     const rate = t => { const ids = s.ids.filter(id => BY_ID.get(id).type === t); return ids.length ? Math.round(ids.filter(id => s.checked[id]).length / ids.length * 100) : null; };
-    const sr = rate("single"), mr = rate("multi");
+    const sr = rate("single"), mr = rate("multi"), xr = rate("match");
     const scen = s.ids.filter(id => splitStem(BY_ID.get(id).stem).context);
     const scr = scen.length ? Math.round(scen.filter(id => s.checked[id]).length / scen.length * 100) : null;
-    const blank = s.ids.filter(id => !(s.answers[id] || []).length).length;
-    const lines = [`本次得分 ${pct}%，${pass ? "已達及格標準。" : "尚未達及格標準。"}${sr !== null ? `單選正確率 ${sr}%` : ""}${mr !== null ? `，複選正確率 ${mr}%` : ""}${scr !== null ? `，情境題正確率 ${scr}%` : ""}。`];
+    const blank = s.ids.filter(id => !hasAnswer(s, id)).length;
+    const extra = xr !== null && xr < 60 ? "配對、填空與排序題考的是條文用語與流程順序，建議對照 ISO 19011 第 5、6 章與 ISO/IEC 27001 第 4～10 條的架構，把關鍵用詞和先後順序整理成自己的流程圖。" : "";
+    const lines = [`本次得分 ${pct}%，${pass ? "已達及格標準。" : "尚未達及格標準。"}${sr !== null ? `單選正確率 ${sr}%` : ""}${mr !== null ? `，複選正確率 ${mr}%` : ""}${xr !== null ? `，配對／填空／排序正確率 ${xr}%` : ""}${scr !== null ? `，情境題正確率 ${scr}%` : ""}。`];
     if (mr !== null && sr !== null && mr + 15 < sr) lines.push("複選題明顯拉低分數。複選題必須全對才給分，檢討時請把每個選項都說出「為什麼對、為什麼錯」，不要只記答案組合。");
     if (scr !== null && scr < 60) lines.push("情境題是主導稽核員考試的重點。建議先抓題目最後的提問，再回到情境中找出事實、對應的條文與要求，練習用「稽核準則－客觀證據－不符合敘述」三段式思考。");
+    if (extra) lines.push(extra);
     if (blank) lines.push(`有 ${blank} 題未作答。空白一定不得分，時間分配上請保留最後 10 分鐘把所有題目填完。`);
     lines.push(pass ? "建議再做一到兩回不同題目的模擬考，確認成績穩定在及格線以上，再安排正式考試。" : "請先完成錯題檢討，再用「錯題複習」把錯題練到全對，之後再做一次模擬考。");
     return `<div class="coach allan" style="margin-top:0;border-top:0;padding-top:0"><img class="ava" src="img/chars/allan-${pass ? "laugh" : "point"}.jpg" alt="Allan Lo"><div><div class="who">Allan Lo 顧問 <small>· 成績檢討</small></div><div class="say">${esc(lines.join("\n"))}</div></div></div>`;
@@ -854,7 +861,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <div class="seal ${pass ? "pass" : "fail"}"><div>${pass ? "通過" : "未通過"}<small>${pct}%</small></div></div>
           <div>
             <h1 style="font-size:28px">${right} / ${s.ids.length} 題答對</h1>
-            <p class="lede">及格門檻 ${s.passPct}%　·　用時 ${fmtTime(s.usedSec)}（限時 ${s.minutes} 分鐘）　·　單選 ${byType("single")}　·　複選 ${byType("multi")}</p>
+            <p class="lede">及格門檻 ${s.passPct}%　·　用時 ${fmtTime(s.usedSec)}（限時 ${s.minutes} 分鐘）　·　單選 ${byType("single")}　·　複選 ${byType("multi")}${byType("match") !== "—" ? `　·　配對／填空／排序 ${byType("match")}` : ""}</p>
             <div class="actions">
               <button class="btn" id="reviewWrong" type="button" ${right === s.ids.length ? "disabled" : ""}>檢討錯題</button>
               <button class="btn ghost" id="reviewAll" type="button">逐題檢視</button>
@@ -870,8 +877,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         </div>
         <h2>作答明細</h2>
         <div class="review">${s.ids.map((id, i) => {
-          const q = BY_ID.get(id), a = (s.answers[id] || []).slice().sort();
-          return `<button data-i="${i}" type="button"><span class="s" style="color:var(--${s.checked[id] ? "ok" : "bad"})">${s.checked[id] ? "✓" : "✗"} ${esc(qLabel(q))}</span><span class="t">${esc(q.stem.replace(/\n/g, " ").slice(-80))}</span><span class="s">${a.join(",") || "—"} → ${q.answer.join(",")}</span></button>`;
+          const q = BY_ID.get(id), a = q.dnd ? [] : (s.answers[id] || []).slice().sort();
+          const sum = q.dnd ? (() => { const ans = dndBlanks(q), st = s.answers[id] || []; return `${ans.filter((x, j) => st[j] != null && q.dnd.pool[st[j]] === x).length} / ${ans.length} 格`; })() : `${a.join(",") || "—"} → ${q.answer.join(",")}`;
+          return `<button data-i="${i}" type="button"><span class="s" style="color:var(--${s.checked[id] ? "ok" : "bad"})">${s.checked[id] ? "✓" : "✗"} ${esc(qLabel(q))}</span><span class="t">${esc(q.stem.replace(/\n/g, " ").slice(-80))}</span><span class="s">${sum}</span></button>`;
         }).join("")}</div>
       </div>`;
     app.querySelector("#toHome").onclick = () => { session = null; renderHome(); };
