@@ -452,6 +452,38 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "",
+     "text": "The strategy chosen to respond to a specific information security risk",
+     "answer": "This is a definition of information security risk treatment"
+    },
+    {
+     "label": "",
+     "text": "The effect of uncertainty on information security objectives",
+     "answer": "This is a definition of information security risk"
+    },
+    {
+     "label": "",
+     "text": "The requirements against which information security risks are evaluated",
+     "answer": "This is a definition of information security risk criteria"
+    },
+    {
+     "label": "",
+     "text": "A definition of the overall level of information security risk that is considered to be tolerable",
+     "answer": "This is a definition of information security risk acceptance criteria"
+    }
+   ],
+   "pool": [
+    "This is a definition of information security risk",
+    "This is a definition of information security risk criteria",
+    "This is a definition of information security risk acceptance criteria",
+    "This is a definition of information security risk treatment"
+   ]
+  },
   "allan": "答案（配對）：\n「針對特定資訊安全風險所選擇的應對策略」→資訊安全風險處理；「不確定性對資訊安全目標的影響」→資訊安全風險；「據以評估資訊安全風險的依據」→資訊安全風險準則；「被視為可容忍的整體資訊安全風險等級之定義」→資訊安全風險接受準則。\n邏輯：ISO/IEC 27000 將風險定義為「不確定性對目標的影響」；風險準則是評估風險顯著性的參考依據，ISO/IEC 27001:2022 第 6.1.2 a) 要求建立並維持包含風險接受準則與執行風險評鑑準則在內的資訊安全風險準則；風險接受準則則界定組織願意承受的風險水準；風險處理（第 6.1.3 條）是選擇並實施修改、避免、分擔或保留等選項來回應風險。\n稽核實務提醒：風險準則與風險接受準則常被混為一談，稽核時要確認組織兩者都有明確定義。"
  },
  {
@@ -1206,6 +1238,50 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "1.",
+     "text": "Also known as a first party audit, this type of audit involves an organisation auditing itself",
+     "answer": "An internal audit"
+    },
+    {
+     "label": "2.",
+     "text": "A third party audit which assesses an organisation's conformity with every clause of a Standard",
+     "answer": "A certification audit"
+    },
+    {
+     "label": "3.",
+     "text": "An audit whose scope requires the assessment of two or more Standards",
+     "answer": "A combined audit"
+    },
+    {
+     "label": "4.",
+     "text": "An audit carried out at a single auditee by two or more auditing organisations",
+     "answer": "A joint audit"
+    },
+    {
+     "label": "5.",
+     "text": "An audit carried out to verify the effectiveness of corrections, corrective action, and agreed opportunities for improvement",
+     "answer": "A follow-up audit"
+    },
+    {
+     "label": "6.",
+     "text": "An audit forming part of a programme of certification body audits in which elements of the auditees' information system management system will be examined",
+     "answer": "A surveillance audit"
+    }
+   ],
+   "pool": [
+    "A joint audit",
+    "A surveillance audit",
+    "An internal audit",
+    "A combined audit",
+    "A follow-up audit",
+    "A certification audit"
+   ]
+  },
   "allan": "答案（配對）：\n1. 又稱第一方稽核，組織稽核自己→內部稽核；2. 評估組織是否符合標準每一條款的第三方稽核→驗證稽核；3. 範圍需評估兩份以上標準→結合稽核；4. 由兩個以上稽核組織對單一受稽核方執行→聯合稽核；5. 驗證改正、矯正措施與協議改進機會的有效性→追查稽核；6. 驗證機構稽核方案中的一環，檢查受稽核方管理系統的部分要素→監督稽核。\n邏輯：ISO 19011:2018 第 3 章區分結合稽核（多個管理系統一起稽核）與聯合稽核（多個稽核組織共同稽核一個受稽核方），這兩者最容易混淆。驗證稽核需涵蓋標準全部要求；監督稽核則在驗證週期內抽查部分要素（ISO/IEC 17021-1:2015 9.6.2）。\n稽核實務提醒：記住「結合看標準數量，聯合看稽核組織數量」。"
  },
  {
@@ -1273,6 +1349,38 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "",
+     "text": "An auditor using a copy of ISO/IEC 27001:2022 to check that its requirements are met",
+     "answer": "This example relates to the use of audit criteria to determine conformity or nonconformity"
+    },
+    {
+     "label": "",
+     "text": "An auditor's note that the auditee is not adhering to its' clear desk policy",
+     "answer": "This example relates to the identification of an audit finding"
+    },
+    {
+     "label": "",
+     "text": "An auditor making a decision regarding the auditee's conformity or otherwise to criteria",
+     "answer": "This description relates to the determination of an audit conclusion"
+    },
+    {
+     "label": "",
+     "text": "An auditor examining verifiable records relevant to the audit process",
+     "answer": "This example relates to relates to the collection of audit evidence"
+    }
+   ],
+   "pool": [
+    "This example relates to the identification of an audit finding",
+    "This example relates to the use of audit criteria to determine conformity or nonconformity",
+    "This description relates to the determination of an audit conclusion",
+    "This example relates to relates to the collection of audit evidence"
+   ]
+  },
   "allan": "答案（配對）：\n稽核員以 ISO/IEC 27001:2022 檢查其要求是否被滿足→使用稽核準則判定符合或不符合；稽核員註記受稽核方未遵守其桌面淨空政策→鑑別稽核發現；稽核員對受稽核方是否符合準則做出決定→決定稽核結論；稽核員檢查與稽核流程相關且可驗證的紀錄→蒐集稽核證據。\n邏輯：ISO 19011:2018 第 3 章定義稽核準則為用來比對客觀證據的參考依據（如 ISO/IEC 27001 的要求）；稽核證據是與稽核準則相關且可驗證的紀錄、事實陳述或其他資訊；稽核發現是將證據與準則比對的評估結果，例如未遵守桌面淨空政策（附錄 A 7.7）；稽核結論則是考量稽核目標與所有發現後的判定。\n稽核實務提醒：這四個術語是一條鏈：準則→證據→發現→結論，順序不能亂。"
  },
  {
@@ -1678,6 +1786,29 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "\"In a third-party audit, ",
+    {
+     "blank": "an observation"
+    },
+    " is an indication of ",
+    {
+     "blank": "conformity"
+    },
+    " that organisation is not required to take action.\""
+   ],
+   "pool": [
+    "nonconformity",
+    "an observation",
+    "a recommendation",
+    "criteria",
+    "conformity",
+    "a finding"
+   ]
+  },
   "allan": "答案：第一個空格填 an observation，第二個空格填 conformity\n完整句子為：「在第三方稽核中，觀察事項（an observation）是符合（conformity）的一種指標，該組織不需要採取行動。」在驗證稽核實務上，觀察事項是稽核員記錄的、尚未構成不符合事項的事實，代表目前仍屬符合，組織可自行決定是否處理，不像不符合事項必須提出矯正措施。\nnonconformity 需要採取矯正措施，與「不需要採取行動」矛盾；a recommendation 在第三方稽核中不宜提供（避免提供顧問服務，見 ISO/IEC 17021-1:2015 對公正性的要求）；criteria 是比較基準，a finding 則可能是符合或不符合，不夠精確。"
  },
  {
@@ -1877,6 +2008,23 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "Select the word that best completes the sentence:",
+   "segments": [
+    "\"A purpose of retaining documented information is to ",
+    {
+     "blank": "demonstrate"
+    },
+    " conformity with the requirements of a management system standard.\""
+   ],
+   "pool": [
+    "demonstrate",
+    "audit",
+    "maintain",
+    "certify"
+   ]
+  },
   "allan": "答案：demonstrate\n完整句子為：「保存文件化資訊的目的之一，是證明（demonstrate）符合管理系統標準的要求。」ISO/IEC 27001:2022 第 7.5 節所要求的文件化資訊，以及多處「應保存文件化資訊作為……之證據」的要求，核心作用就是提供客觀證據以證明符合性。\naudit 是使用紀錄的活動而非保存目的；maintain 在 ISO 用語中指「維持」文件（如程序），與「保存（retain）紀錄」的用意不同；certify 是驗證機構的行為，組織不能靠保存紀錄來自我驗證。"
  },
  {
@@ -2005,6 +2153,38 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "1.",
+     "text": "",
+     "answer": "Establish information security criteria"
+    },
+    {
+     "label": "2.",
+     "text": "",
+     "answer": "Identify the information security risks"
+    },
+    {
+     "label": "3.",
+     "text": "",
+     "answer": "Analyse the information security risks"
+    },
+    {
+     "label": "4.",
+     "text": "",
+     "answer": "Evaluate the information security risks"
+    }
+   ],
+   "pool": [
+    "Identify the information security risks",
+    "Evaluate the information security risks",
+    "Analyse the information security risks",
+    "Establish information security criteria"
+   ]
+  },
   "allan": "答案：1. 建立資訊安全風險準則 → 2. 識別資訊安全風險 → 3. 分析資訊安全風險 → 4. 評估資訊安全風險\n此順序直接來自 ISO/IEC 27001:2022 6.1.2：先 a) 建立並維持風險準則（含風險接受準則與執行評鑑的準則），再 c) 識別風險（喪失機密性、完整性、可用性的風險及其風險擁有者），接著 d) 分析風險（評估後果與可能性並決定風險等級），最後 e) 評估風險（將分析結果與準則比較並排定處理優先順序）。\n邏輯上必須先有準則，後續的分析與評估才有一致的比較基準；評估是拿分析結果對照準則，故必在分析之後。"
  },
  {
@@ -3065,6 +3245,36 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "Select the words that best complete the sentence:",
+   "segments": [
+    "\"The purpose of a third-party audit is to ",
+    {
+     "blank": "evaluate"
+    },
+    " an organisation's ",
+    {
+     "blank": "management system"
+    },
+    " to inform ",
+    {
+     "blank": "a certification"
+    },
+    " decision.\""
+   ],
+   "pool": [
+    "approve",
+    "inspect",
+    "a compliance",
+    "an accreditation",
+    "products",
+    "evaluate",
+    "management system",
+    "a certification",
+    "processes"
+   ]
+  },
   "allan": "答案：evaluate（評估）／management system（管理系統）／a certification（驗證）\n完整句子為：「第三方稽核的目的是評估組織的管理系統，以作為驗證決定的依據。」第三方稽核由獨立的驗證機構執行，依 ISO/IEC 17021-1:2015，稽核團隊蒐集證據並提出建議，最終由驗證機構中未參與稽核的人員做出驗證決定。\n干擾選項中，approve 與 inspect 不符稽核「評估符合性」的本質；稽核對象是管理系統，而非 products 或單一 processes；an accreditation 是認證機構對驗證機構的認可，與受稽核組織無關；a compliance 也不是正式用語。\n稽核實務提醒：分清「驗證（certification）」與「認證（accreditation）」，是台灣驗證界最常被考的用語陷阱。"
  },
  {
@@ -3234,6 +3444,60 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "Step 1",
+     "text": "Incident logging",
+     "answer": null
+    },
+    {
+     "label": "Step 2",
+     "text": "",
+     "answer": "Incident categorisation – determine whether the incident is a hardware issue, network issue or software issue"
+    },
+    {
+     "label": "Step 3",
+     "text": "",
+     "answer": "Incident prioritisation – classify the incident as critical, high, medium, low"
+    },
+    {
+     "label": "Step 4",
+     "text": "",
+     "answer": "Incident assignment – incident is passed to the individual best suited to resolve it"
+    },
+    {
+     "label": "Step 5",
+     "text": "",
+     "answer": "Task creation and management – identification and coordination of work needed to resolve the incident"
+    },
+    {
+     "label": "Step 6",
+     "text": "",
+     "answer": "SLA management and escalation – ensure any service level agreements are adhered to whist resolution is being implemented. If a breach looks likely, escalate to secure more resources"
+    },
+    {
+     "label": "Step 7",
+     "text": "",
+     "answer": "Incident resolution – a temporary workaround or permanent resolution has been identified"
+    },
+    {
+     "label": "Step 8",
+     "text": "Incident closure",
+     "answer": null
+    }
+   ],
+   "pool": [
+    "Incident prioritisation – classify the incident as critical, high, medium, low",
+    "Task creation and management – identification and coordination of work needed to resolve the incident",
+    "SLA management and escalation – ensure any service level agreements are adhered to whist resolution is being implemented. If a breach looks likely, escalate to secure more resources",
+    "Incident resolution – a temporary workaround or permanent resolution has been identified",
+    "Incident assignment – incident is passed to the individual best suited to resolve it",
+    "Incident categorisation – determine whether the incident is a hardware issue, network issue or software issue"
+   ]
+  },
   "allan": "答案：事件登錄 → 事件分類 → 事件優先排序 → 事件指派 → 任務建立與管理 → SLA 管理與升級 → 事件解決 → 事件結案\n排序邏輯是先「認識事件」再「處理事件」：登錄後先判定事件屬於硬體、網路或軟體問題（分類），才能依衝擊程度排出關鍵、高、中、低（優先排序），再交給最適合的人員處理（指派）。指派後拆解並協調所需工作（任務建立與管理），處理過程中持續確保符合服務水準協議，必要時升級以取得更多資源（SLA 管理與升級），最後取得暫時性替代方案或永久解決方案（事件解決），才能結案。\n此流程對應 ISO/IEC 27001:2022 附錄 A.5.24 至 A.5.28 的事件管理規劃、評估與決策、回應及學習。若先指派後分類，常會把事件交給錯誤團隊，造成延誤。\n稽核實務提醒：結案前應確認已記錄經驗學習（A.5.27），這常是稽核發現所在。"
  },
  {
@@ -3533,6 +3797,39 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "\"When reviewing the ",
+    {
+     "blank": "effectiveness"
+    },
+    " of action taken in response to a ",
+    {
+     "blank": "nonconformity"
+    },
+    ", an auditor seeks evidence of ",
+    {
+     "blank": "change"
+    },
+    " that will ",
+    {
+     "blank": "prevent"
+    },
+    " recurrence of the issue.\""
+   ],
+   "pool": [
+    "repair",
+    "assurance",
+    "responsibility",
+    "effectiveness",
+    "nonconformity",
+    "prevent",
+    "change",
+    "problem"
+   ]
+  },
   "allan": "答案：effectiveness（有效性）／nonconformity（不符合事項）／change（改變）／prevent（防止）\n完整句子為：「在審查針對不符合事項所採取行動的有效性時，稽核員尋求能防止問題再發生之改變的證據。」這正是 ISO/IEC 27001:2022 10.2 的精神：組織應消除不符合的原因以免再發生，並審查所採取矯正措施的有效性。\n干擾選項中，repair 只是修補（較接近矯正），不代表消除原因；assurance、responsibility 與句意無關；problem 雖可描述情況，但標準用語是 nonconformity。本案的投訴涉及個資被用於未同意的行銷目的，矯正措施若只是停發廣告而未改變流程，就不足以防止再發生。\n稽核實務提醒：追查時要問「改變了什麼」，沒有流程或控制的改變，通常就沒有真正的矯正措施。"
  },
  {
@@ -3755,6 +4052,54 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "Match the correct responsibility with each participant of a second-party audit:",
+   "headers": [
+    "Responsibility",
+    "Audit Participant"
+   ],
+   "rows": [
+    {
+     "label": "",
+     "text": "Prepares the audit report",
+     "answer": "Audit Team Leader"
+    },
+    {
+     "label": "",
+     "text": "Prepares audit checklists for use during the audit",
+     "answer": "Auditor"
+    },
+    {
+     "label": "",
+     "text": "Supports an auditor and provides feedback on their experience",
+     "answer": "Auditor in training"
+    },
+    {
+     "label": "",
+     "text": "Follows-up on audit findings within an agreed timeframe",
+     "answer": "Auditee"
+    },
+    {
+     "label": "",
+     "text": "Provides an independent account of the audit but does not participate in the audit",
+     "answer": "Observer"
+    },
+    {
+     "label": "",
+     "text": "Escorts the auditors but does not participate in the audit",
+     "answer": "Guide"
+    }
+   ],
+   "pool": [
+    "Audit Team Leader",
+    "Auditor in training",
+    "Auditor",
+    "Auditee",
+    "Guide",
+    "Observer"
+   ]
+  },
   "allan": "答案：撰寫稽核報告－稽核組長；準備稽核查檢表－稽核員；支援稽核員並回饋其經驗－受訓稽核員；在約定期限內追查稽核發現－受稽核方；提供獨立的稽核紀錄但不參與稽核－觀察員；陪同稽核員但不參與稽核－嚮導\n依 ISO 19011:2018，稽核組長負責稽核報告的編撰與內容（6.5.1）；稽核員負責準備工作文件，例如查檢表（6.3.4）；受訓稽核員在指導下參與稽核並協助稽核員。受稽核方須在約定期限內處理並追蹤稽核發現（6.7）。觀察員可隨行但不參與、也不影響稽核進行（6.4.4）；嚮導由受稽核方指派，協助聯繫與陪同，同樣不執行稽核（6.4.4）。\n本題容易混淆的是觀察員與嚮導，兩者都「不參與稽核」，差別在於嚮導的角色是陪同與協助，觀察員則是見證。\n稽核實務提醒：開場會議就應說明觀察員與嚮導的角色與限制，避免現場干擾。"
  },
  {
@@ -4565,6 +4910,29 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "\"Audit resources include the ",
+    {
+     "blank": "essential"
+    },
+    " resources to complete the audit programme as well as ",
+    {
+     "blank": "competent"
+    },
+    " personnel to achieve the audit objectives.\""
+   ],
+   "pool": [
+    "certification",
+    "technological",
+    "competent",
+    "management",
+    "backup",
+    "essential"
+   ]
+  },
   "allan": "答案：essential（第一空）、competent（第二空）\n完整句子為「稽核資源包括完成稽核方案所需的必要（essential）資源，以及達成稽核目標所需的適任（competent）人員」。這呼應 ISO 19011:2018 5.4 建立稽核方案時對資源的要求：稽核方案管理者須確認財務、時間、技術等必要資源，以及具備適當能力的稽核員與技術專家。\n其他字詞的問題：technological 只涵蓋技術資源，範圍過窄；certification、management、backup 與「資源」或「人員」搭配後都不是標準用語，也無法完整表達「足夠且適任」的意涵。\n稽核實務提醒：人員「適任」是關鍵字，ISO 19011 第 7 章整章都在談稽核員能力的決定與評估。"
  },
  {
@@ -4689,6 +5057,23 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "It is the sole responsibility of a third-party audit team leader to ",
+    {
+     "blank": "act on behalf of the certification body"
+    },
+    "."
+   ],
+   "pool": [
+    "select the audit team members",
+    "act on behalf of the certification body",
+    "compile checklists for the audit team",
+    "identify non-conformances in the management system"
+   ]
+  },
   "allan": "答案：act on behalf of the certification body（代表驗證機構行事）\n第三方稽核中，稽核小組長是驗證機構指派的代表，對外以驗證機構名義領導稽核、與受稽核方溝通並提出驗證建議，這是其他成員無法替代的「唯一」責任。ISO/IEC 17021-1:2015 也規定稽核小組由驗證機構指派，最終驗證決定則由驗證機構作成。\n其他選項不是小組長獨有：選擇稽核小組成員由驗證機構（稽核方案管理）負責；編製查檢表是每位稽核員各自準備；識別管理系統的不符合事項是全體稽核員的職責。\n稽核實務提醒：小組長在現場代表驗證機構，但不代表驗證機構作出最終驗證決定，這兩者要分清楚。"
  },
  {
@@ -4763,6 +5148,48 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "",
+     "text": "Appoint an audit team leader",
+     "answer": null
+    },
+    {
+     "label": "",
+     "text": "",
+     "answer": "Prepare the audit checklist"
+    },
+    {
+     "label": "",
+     "text": "",
+     "answer": "Gather objective evidence"
+    },
+    {
+     "label": "",
+     "text": "",
+     "answer": "Review audit evidence"
+    },
+    {
+     "label": "",
+     "text": "",
+     "answer": "Document findings"
+    },
+    {
+     "label": "",
+     "text": "Issue the report",
+     "answer": null
+    }
+   ],
+   "pool": [
+    "Prepare the audit checklist",
+    "Gather objective evidence",
+    "Review audit evidence",
+    "Document findings"
+   ]
+  },
   "allan": "答案：指派稽核小組長 → 準備稽核查檢表 → 蒐集客觀證據 → 審查稽核證據 → 記錄稽核發現 → 發出報告\n這個順序反映 ISO 19011:2018 第 6 章的稽核流程：先由稽核方案管理指派小組長並啟動稽核，接著準備工作文件（6.3.4，含查檢表）；進入現場後蒐集並查證資訊（6.4.7），再依稽核準則評估證據（審查稽核證據），產生稽核發現（6.4.8）；最後彙整結論並準備、分發稽核報告（6.5）。\n邏輯上，沒有查檢表就難以有系統地蒐集證據；未經審查的證據不能直接寫成發現；發現確定後才能形成報告。\n稽核實務提醒：第一方（內部）稽核也應遵循相同的邏輯，否則內部稽核報告的證據力會受到驗證機構質疑。"
  },
  {
@@ -5993,6 +6420,42 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "headers": [
+    "Audit Evidence",
+    "ISO/IEC 27001:2022 Requirements"
+   ],
+   "rows": [
+    {
+     "label": "",
+     "text": "The top management has signed and approved the ISMS policy (Document reference ID: ISMS_L1_01, version 1.3), mobile device policy (Document reference ID: ISMS_L2_07, version 1, release 4), and information security objectives are linked to Annex A's information security control objectives.",
+     "answer": "Clause 5.1 a"
+    },
+    {
+     "label": "",
+     "text": "Testing on 5 medical staff's mobile phones, all mobile phones are pin code protected screen lock and the 15 digits IME (International Mobile Equipment Identity) are registered in the asset register (Document reference ID: ISMS_L4_01, version 2.1).",
+     "answer": "A.8.1"
+    },
+    {
+     "label": "",
+     "text": "Interview with IT staff (employee ID: NH-1268); he is well informed and understood the mobile device policy. You checked his mobile phone and found it is 6 digits pin code protected and NO resident's data is stored.",
+     "answer": "Clause 7.3"
+    },
+    {
+     "label": "",
+     "text": "Interview with human resource manager; sampling on medical staff's information security roles and responsibilities are assigned in the job description (Document reference ID: ISMS_L4_04, version 1.0).",
+     "answer": "Clause 5.3"
+    }
+   ],
+   "pool": [
+    "Clause 5.1 a",
+    "Clause 7.3",
+    "A.8.1",
+    "Clause 5.3"
+   ]
+  },
   "allan": "答案：證據1（最高管理階層簽核 ISMS 政策、行動裝置政策並將目標連結控制措施）對應條款 5.1 a；證據2（抽測醫護人員手機的 PIN 鎖並登錄 IMEI 於資產清冊）對應 A.8.1；證據3（訪談 IT 人員了解行動裝置政策）對應條款 7.3；證據4（工作說明書中指派資訊安全角色與職責）對應條款 5.3。\n邏輯在於辨識證據所驗證的要求：5.1 a 要求最高管理階層確保資訊安全政策與目標已建立；A.8.1 使用者端點裝置要求保護儲存或處理於使用者端點裝置上的資訊；7.3 認知要求人員知曉資訊安全政策與自身貢獻；5.3 要求最高管理階層指派並溝通資訊安全相關角色的職責與權限。\n稽核實務提醒：同一份證據要先問「它證明了誰做了什麼」，再對應條文，才不會張冠李戴。"
  },
  {
@@ -6146,6 +6609,56 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "A key audit process is the way auditors gather information and determine the findings' characteristics. Put the actions listed in the correct order to complete this process. The last one has been done for you.",
+   "headers": [
+    "Actions"
+   ],
+   "rows": [
+    {
+     "label": "1.",
+     "text": "Determine source of information",
+     "answer": null
+    },
+    {
+     "label": "2.",
+     "text": "Collect by means of appropriate sampling",
+     "answer": null
+    },
+    {
+     "label": "3.",
+     "text": "",
+     "answer": "Reviewing"
+    },
+    {
+     "label": "4.",
+     "text": "",
+     "answer": "Audit evidence"
+    },
+    {
+     "label": "5.",
+     "text": "",
+     "answer": "Evaluating against audit criteria"
+    },
+    {
+     "label": "6.",
+     "text": "",
+     "answer": "Audit findings"
+    },
+    {
+     "label": "7.",
+     "text": "Audit conclusions",
+     "answer": null
+    }
+   ],
+   "pool": [
+    "Audit evidence",
+    "Reviewing",
+    "Evaluating against audit criteria",
+    "Audit findings"
+   ]
+  },
   "allan": "答案：依題庫順序為：1 決定資訊來源 → 2 以適當抽樣蒐集 → 3 審查（Reviewing）→ 4 稽核證據 → 5 對照稽核準則評估 → 6 稽核發現 → 7 稽核結論。\n本題對應 ISO 19011:2018 第 6.4.7 節蒐集與查證資訊的流程概念：先確定資訊來源，透過適當抽樣蒐集資訊，經查證後形成稽核證據；再將稽核證據對照稽核準則評估，產生稽核發現；最後彙整審查稽核發現，得出稽核結論。題庫將「審查」放在蒐集之後，意指對蒐集到的資訊進行查證審視，才能成為可採信的稽核證據。\n稽核實務提醒：記住「證據對照準則得到發現，發現經審查得到結論」這條主線。",
   "allanDoubt": "ISO 19011:2018 圖 2 的順序為：資訊來源 → 以適當抽樣蒐集並查證 → 稽核證據 → 對照稽核準則評估 → 稽核發現 → 審查（Review）→ 稽核結論；「審查」應位於第 6 格（稽核發現之後），正確填法應為 稽核證據、對照準則評估、稽核發現、審查。"
  },
@@ -6451,6 +6964,45 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "An organisation is looking for management system initial certification. Please identify the sequence of the activities to be undertaken by the organisation.",
+   "rows": [
+    {
+     "label": "1.",
+     "text": "Establish the management system",
+     "answer": null
+    },
+    {
+     "label": "2.",
+     "text": "",
+     "answer": "Plan the audit programme"
+    },
+    {
+     "label": "3.",
+     "text": "",
+     "answer": "Conduct supplier audits"
+    },
+    {
+     "label": "4.",
+     "text": "",
+     "answer": "Hold a Management Review"
+    },
+    {
+     "label": "5.",
+     "text": "",
+     "answer": "Engage a Certification Body for stage 1 and stage 2 audits"
+    }
+   ],
+   "pool": [
+    "Complete any corrective actions",
+    "Conduct supplier audits",
+    "Engage a Certification Body for stage 1 and stage 2 audits",
+    "Plan the audit programme",
+    "Conduct internal audits",
+    "Hold a Management Review"
+   ]
+  },
   "allan": "答案：依題庫順序為：1 建立管理系統 → 2 規劃稽核方案 → 3 執行供應商稽核 → 4 召開管理階層審查 → 5 委任驗證機構執行第一、二階段稽核。\n邏輯在於：組織建立並實施 ISMS 後，必須先完成績效評估再申請驗證。規劃稽核方案（ISO/IEC 27001:2022 條款 9.2.2）並據以執行稽核，取得 ISMS 運作的證據；稽核結果與其他績效資訊作為管理階層審查（條款 9.3）的輸入；完成至少一輪內部稽核與管理階層審查後，驗證機構在第一階段稽核時才有足夠的運作紀錄可審查。\n稽核實務提醒：第一階段稽核時，驗證機構通常會確認內部稽核與管理階層審查已規劃並執行。",
   "allanDoubt": "選項中的「Conduct internal audits（執行內部稽核）」才是 ISO/IEC 27001:2022 條款 9.2 的強制要求，也是驗證前必須完成的活動；第 3 格填「執行供應商稽核」不合理，正確順序應為 規劃稽核方案 → 執行內部稽核 → 管理階層審查 → 委任驗證機構。"
  },
@@ -6680,6 +7232,36 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "Select the words that best complete the sentence to describe an audit finding.",
+   "segments": [
+    "\"An audit finding is the result of the ",
+    {
+     "blank": "evaluation"
+    },
+    " of the collected audit ",
+    {
+     "blank": "evidence"
+    },
+    " against audit ",
+    {
+     "blank": "criteria"
+    },
+    ".\""
+   ],
+   "pool": [
+    "statement",
+    "objectives",
+    "conclusions",
+    "responses",
+    "gathering",
+    "recommendations",
+    "criteria",
+    "evidence",
+    "evaluation"
+   ]
+  },
   "allan": "答案：An audit finding is the result of the evaluation of the collected audit evidence against audit criteria.（稽核發現是對照稽核準則評估所蒐集之稽核證據的結果）\n此句直接出自 ISO 19011:2018 第 3.10 節稽核發現的定義，也與 ISO 9000 系列術語一致。三個空格依序填 evaluation、evidence、criteria。邏輯是：稽核證據（3.9）是可查證的紀錄與資訊；稽核準則（3.7）是用來比較的參考基準；兩者比對評估後的結果即為稽核發現，可指出符合或不符合，也可能形成改進機會。\n其他干擾選項如 gathering、statement、conclusions、recommendations 都與定義不符，尤其稽核結論（3.11）是在考量稽核目標與所有稽核發現後的結果，層次不同。\n稽核實務提醒：術語定義是主導稽核員考試的基本功，三個 3.x 定義要背熟。"
  },
  {
@@ -6723,6 +7305,41 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "The purpose of ",
+    {
+     "blank": "review"
+    },
+    " is to ",
+    {
+     "blank": "assess"
+    },
+    " the information security management system at ",
+    {
+     "blank": "regular"
+    },
+    " intervals to ensure it's continuing ",
+    {
+     "blank": "suitability"
+    },
+    ", adequacy and effectiveness."
+   ],
+   "pool": [
+    "planned",
+    "assess",
+    "Risk Assessment",
+    "efficiency",
+    "suitability",
+    "review",
+    "Risk Management",
+    "regular",
+    "Management Review",
+    "random"
+   ]
+  },
   "allan": "答案：依題庫答案，句子為 The purpose of review is to assess the information security management system at regular intervals to ensure its continuing suitability, adequacy and effectiveness.\n題意在強調 PDCA 的「檢查」階段：ISO/IEC 27001:2022 條款 9.3 管理階層審查要求最高管理階層定期審查 ISMS，以確保其持續的適切性、充分性與有效性。題庫將四格依序填入 review、assess、regular、suitability，重點是 suitability、adequacy、effectiveness 這組固定用語，以及審查必須定期進行而非隨機。\n干擾選項中 efficiency 不是條款 9.3 的用語；random 違反定期審查的精神；Risk Assessment、Risk Management 屬條款 6.1、8.2 的範疇。\n稽核實務提醒：管理階層審查的三個關鍵字「適切、充分、有效」務必熟記。",
   "allanDoubt": "條款 9.3.1 原文為「Top management shall review the organization's ISMS at planned intervals to ensure its continuing suitability, adequacy and effectiveness」，依標準用語較合理的填法應為 Management Review / review / planned / suitability；題庫答案 review / assess / regular 與標準原文不完全一致。"
  },
@@ -7005,6 +7622,50 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "",
+     "text": "A process by which the nature of the risk is determined along with its probability and impact",
+     "answer": "Risk analysis"
+    },
+    {
+     "label": "",
+     "text": "A process by which a risk is controlled at all stages of its life cycle by means of the application of organisational policies, procedures and practices",
+     "answer": "Risk management"
+    },
+    {
+     "label": "",
+     "text": "A process by which a risk is recognised and described",
+     "answer": "Risk identification"
+    },
+    {
+     "label": "",
+     "text": "A process by which the impact and /or probability of a risk is compared against risk criteria to determine if it is tolerable",
+     "answer": "Risk evaluation"
+    },
+    {
+     "label": "",
+     "text": "A process by which the impact and/or probability of a risk is reduced by means of the application of controls",
+     "answer": "Risk mitigation"
+    },
+    {
+     "label": "",
+     "text": "A process by which a risk is passed to a third party, for example through obtaining appropriate insurance",
+     "answer": "Risk transfer"
+    }
+   ],
+   "pool": [
+    "Risk transfer",
+    "Risk analysis",
+    "Risk identification",
+    "Risk management",
+    "Risk mitigation",
+    "Risk evaluation"
+   ]
+  },
   "allan": "答案：決定風險本質、可能性與衝擊 → 風險分析；以組織政策、程序與實務控制風險全生命週期 → 風險管理；辨識並描述風險 → 風險識別；將衝擊與可能性與風險準則比較以判斷是否可容忍 → 風險評估（risk evaluation）；以控制措施降低衝擊或可能性 → 風險降低（mitigation）；透過保險等方式將風險轉給第三方 → 風險移轉。\n邏輯依循 ISO 31000 與 ISO/IEC 27005 的術語：風險評鑑由識別、分析、評估三步組成，對應 ISO/IEC 27001:2022 條款 6.1.2 c、d、e；風險處理（條款 6.1.3）包括降低、移轉、避免與保留等選項；風險管理則是涵蓋上述所有活動的整體協調。\n稽核實務提醒：注意「評估」是比對風險準則以決定處理優先順序，與「分析」決定風險等級不同。"
  },
  {
@@ -7417,6 +8078,40 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "1.",
+     "text": "The organisation or person requesting an audit",
+     "answer": "Audit client"
+    },
+    {
+     "label": "2.",
+     "text": "The organisation as a whole or parts thereof being audited",
+     "answer": "Auditee"
+    },
+    {
+     "label": "3.",
+     "text": "A person who provides specific knowledge or expertise relating to the organisation, activity, process, product, service or discipline to be audited",
+     "answer": "Technical expert"
+    },
+    {
+     "label": "4.",
+     "text": "A person who accompanies the audit team but does not act as an auditor",
+     "answer": "Observer"
+    }
+   ],
+   "pool": [
+    "Audit team leader",
+    "Audit client",
+    "Observer",
+    "Auditee",
+    "Technical expert",
+    "Auditor"
+   ]
+  },
   "allan": "答案：1 稽核委託者（Audit client）；2 受稽核方（Auditee）；3 技術專家（Technical expert）；4 觀察員（Observer）\n這四項定義都出自 ISO 19011:2018 第 3 章術語：提出稽核請求的組織或人員是稽核委託者；整體或部分被稽核的組織是受稽核方；對受稽核的組織、活動、流程、產品、服務或專業領域提供特定知識或專業的人員是技術專家；隨同稽核團隊但不以稽核員身分執行稽核的人員是觀察員。\n未使用的選項中，稽核組長（Audit team leader）與稽核員（Auditor）都是實際執行稽核的人，不符合上述任何一項描述。特別要注意技術專家與觀察員都不是稽核員，技術專家須在稽核員指導下工作。\n稽核實務提醒：觀察員可能來自認證機構、受稽核方或主管機關，稽核組長要確保其不影響或干預稽核進行。"
  },
  {
@@ -7487,6 +8182,39 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "\"The purpose of including access rights in an information management system to ISO/IEC 27001:2022 is to provide, review, modify and remove these ",
+    {
+     "blank": "permissions"
+    },
+    " in accordance with the organisation's ",
+    {
+     "blank": "policy"
+    },
+    " and ",
+    {
+     "blank": "rules"
+    },
+    " for access ",
+    {
+     "blank": "control"
+    },
+    ".\""
+   ],
+   "pool": [
+    "guidance",
+    "rules",
+    "process",
+    "options",
+    "policy",
+    "rights",
+    "permissions",
+    "control"
+   ]
+  },
   "allan": "答案：permissions／policy／rules／control\n完整句子為：在 ISO/IEC 27001:2022 中納入存取權限的目的，是依組織的存取控制主題特定政策（policy）與規則（rules），提供、審查、修改及移除這些權限（permissions）。這對應附錄 A 5.18 存取權限的控制措施內容：存取權限應依組織的存取控制主題特定政策及規則，予以提供、審查、修改及移除。\n干擾選項 guidance、process、options、rights 都不是控制措施原文用語；rights 雖語意接近，但句中前段已用「access rights」，空格處指的是這些被授予的 permissions。\n稽核實務提醒：本題情境中 20 名離職人員權限延遲 1 週才移除，與政策要求的 24 小時不符，正是 5.18 移除權限要求的典型不符合事項。"
  },
  {
@@ -7570,6 +8298,55 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "In the context of a management system audit, please identify the sequence of a typical process of collecting and verifying information. The first one has been done for you.",
+   "rows": [
+    {
+     "label": "1.",
+     "text": "Identifying the source of information",
+     "answer": null
+    },
+    {
+     "label": "2.",
+     "text": "",
+     "answer": "Gathering audit evidence"
+    },
+    {
+     "label": "3.",
+     "text": "",
+     "answer": "Sampling the available data"
+    },
+    {
+     "label": "4.",
+     "text": "",
+     "answer": "Verifying objective evidence"
+    },
+    {
+     "label": "5.",
+     "text": "",
+     "answer": "Evaluating evidence against the audit criteria"
+    },
+    {
+     "label": "6.",
+     "text": "",
+     "answer": "Recording audit findings"
+    },
+    {
+     "label": "7.",
+     "text": "",
+     "answer": "Making audit conclusions"
+    }
+   ],
+   "pool": [
+    "Sampling the available data",
+    "Evaluating evidence against the audit criteria",
+    "Making audit conclusions",
+    "Verifying objective evidence",
+    "Gathering audit evidence",
+    "Recording audit findings"
+   ]
+  },
   "allan": "答案：1 識別資訊來源；2 蒐集稽核證據；3 抽樣可取得資料；4 驗證客觀證據；5 對照稽核準則評估證據；6 記錄稽核發現；7 做成稽核結論\nISO 19011:2018 第 6.4.7 條描述資訊蒐集與查證的典型流程：從資訊來源出發，以適當的抽樣蒐集並查證資訊，取得稽核證據；接著將證據對照稽核準則評估，產生稽核發現；最後經審查形成稽核結論。\n邏輯上必須先有經查證的證據，才能與準則比較；有了發現，才能彙整出結論，順序不能倒置。\n稽核實務提醒：只有經過查證的資訊才能成為稽核證據，未經查證的說法只能當作線索。"
  },
  {
@@ -7625,6 +8402,50 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "ISO 19011 Audit Lifecycle:",
+   "rows": [
+    {
+     "label": "Step 1:",
+     "text": "",
+     "answer": "Audit initiation"
+    },
+    {
+     "label": "Step 2:",
+     "text": "",
+     "answer": "Audit preparation"
+    },
+    {
+     "label": "Step 3:",
+     "text": "",
+     "answer": "Conducting the audit"
+    },
+    {
+     "label": "Step 4:",
+     "text": "",
+     "answer": "Preparing and distributing the audit report"
+    },
+    {
+     "label": "Step 5:",
+     "text": "",
+     "answer": "Audit completion"
+    },
+    {
+     "label": "Step 6:",
+     "text": "",
+     "answer": "Audit follow-up"
+    }
+   ],
+   "pool": [
+    "Audit preparation",
+    "Audit initiation",
+    "Audit completion",
+    "Conducting the audit",
+    "Preparing and distributing the audit report",
+    "Audit follow-up"
+   ]
+  },
   "allan": "答案：稽核啟動 → 稽核準備 → 執行稽核 → 準備及分發稽核報告 → 完成稽核 → 稽核追蹤\n這個順序對應 ISO 19011:2018 第 6 章：6.2 啟動稽核（與受稽核方建立聯繫、確認可行性）、6.3 準備稽核活動（文件審查、稽核計畫、工作分派）、6.4 執行稽核活動（開場會議、蒐集證據、結束會議）、6.5 準備與分發稽核報告、6.6 完成稽核、6.7 執行稽核追蹤。\n邏輯上要先確認可行性才能規劃，規劃後才能進場，現場結束後才有報告，報告發出後稽核才算完成，追蹤則視稽核計畫的需要另外進行。\n稽核實務提醒：稽核追蹤（如矯正措施有效性的驗證）通常不屬於該次稽核本身，可能在後續稽核中執行。"
  },
  {
@@ -7730,6 +8551,38 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "How would you respond? Match the control description to the category.",
+   "rows": [
+    {
+     "label": "",
+     "text": "8.1 Information stored on, processed by, or accessible via user endpoint devices shall be protected",
+     "answer": "Technological control"
+    },
+    {
+     "label": "",
+     "text": "7.8 Equipment shall be sited securely and protected",
+     "answer": "Physical control"
+    },
+    {
+     "label": "",
+     "text": "5.2 Information security roles and responsibilities shall be defined and allocated according to the organisation's needs",
+     "answer": "Organizational control"
+    },
+    {
+     "label": "",
+     "text": "6.7 Security measures shall be implemented when personnel are working remotely to protect information processed, processed, or stored outside the organisation's premises",
+     "answer": "People control"
+    }
+   ],
+   "pool": [
+    "Technological control",
+    "People control",
+    "Organizational control",
+    "Physical control"
+   ]
+  },
   "allan": "答案：8.1 → 技術控制；7.8 → 實體控制；5.2 → 組織控制；6.7 → 人員控制\nISO/IEC 27001:2022 附錄 A 的 93 項控制措施分為四個主題，編號即反映類別：第 5 章組織控制（37 項）、第 6 章人員控制（8 項）、第 7 章實體控制（14 項）、第 8 章技術控制（34 項）。因此 8.1 使用者端點裝置屬技術控制；7.8 設備安置及保護屬實體控制；5.2 資訊安全角色及責任屬組織控制；6.7 遠距工作屬人員控制。\n6.7 容易被誤認為技術控制，但 2022 版將其歸類在人員控制，因為重點在人員於組織場所外工作時應遵循的安全措施。\n稽核實務提醒：將 2013 版適用性聲明轉換至 2022 版時，須確認新增的 11 項控制措施也已完成適用性判斷。"
  },
  {
@@ -8438,6 +9291,54 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "headers": [
+    "Descriptions",
+    "Auditor's characteristics"
+   ],
+   "rows": [
+    {
+     "label": "",
+     "text": "Actively observing surroundings/activities",
+     "answer": "Observant"
+    },
+    {
+     "label": "",
+     "text": "Fair, truthful, sincere, honest, discreet",
+     "answer": "Ethical"
+    },
+    {
+     "label": "",
+     "text": "Persistent and focused on objectives",
+     "answer": "Tenacious"
+    },
+    {
+     "label": "",
+     "text": "Willing to learn from situations",
+     "answer": "Open to improvement"
+    },
+    {
+     "label": "",
+     "text": "Tactful in dealing with individuals",
+     "answer": "Diplomatic"
+    },
+    {
+     "label": "",
+     "text": "Aware of and able to understand situations",
+     "answer": "Perceptive"
+    }
+   ],
+   "pool": [
+    "Tenacious",
+    "Ethical",
+    "Diplomatic",
+    "Observant",
+    "Perceptive",
+    "Open to improvement"
+   ]
+  },
   "allan": "答案：主動觀察周遭與活動 → 善於觀察（Observant）；公正、誠實、真誠、謹慎 → 合乎倫理（Ethical）；堅持且專注於目標 → 堅韌（Tenacious）；願意從情境中學習 → 樂於改進（Open to improvement）；與人應對圓融 → 圓融（Diplomatic）；能察覺並理解情境 → 具洞察力（Perceptive）\n這些特質出自 ISO 19011:2018 第 7.2.2 條稽核員的個人行為。配對關鍵在於關鍵字：observant 強調「觀察」，ethical 強調「公正與誠實」，tenacious 強調「堅持達成目標」，open to improvement 強調「從經驗中學習」，diplomatic 強調「與人相處的手腕」，perceptive 強調「察覺與理解情境」。\nObservant 與 Perceptive 最容易混淆：前者是主動看見，後者是能理解所看到的情境。\n稽核實務提醒：受稽核方對稽核的觀感，很大程度取決於稽核員的個人行為，專業能力與態度同樣重要。"
  },
  {
@@ -8454,6 +9355,28 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "“",
+    {
+     "blank": "Audit evidence"
+    },
+    " should be evaluated against the ",
+    {
+     "blank": "Audit criteria"
+    },
+    " in order to determine audit findings.”"
+   ],
+   "pool": [
+    "Audit conclusion",
+    "Audit evidence",
+    "Audit objective",
+    "Audit criteria",
+    "Audit scope"
+   ]
+  },
   "allan": "答案：Audit evidence（稽核證據）／Audit criteria（稽核準則）\n完整句子為：「稽核證據應對照稽核準則進行評估，以決定稽核發現。」這與 ISO 19011:2018 第 3 章對稽核發現的定義一致：稽核發現是將所蒐集的稽核證據對照稽核準則評估的結果，第 6.4.8 條亦說明產生稽核發現的方式。\n干擾選項中，稽核結論是在考量所有稽核發現後得出的結果，是在發現之後；稽核目標與稽核範圍則是界定稽核要做什麼與做多大範圍，不是評估證據的依據。\n稽核實務提醒：稽核發現可以是符合也可以是不符合，不要誤以為稽核發現只等同不符合事項。"
  },
  {
@@ -9413,6 +10336,23 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "“The purpose of maintaining regulatory compliance in a management system is to ",
+    {
+     "blank": "fulfil management system policy"
+    },
+    ".”"
+   ],
+   "pool": [
+    "keep good relations with authorities",
+    "pass the audit",
+    "avoid financial penalties",
+    "fulfil management system policy"
+   ]
+  },
   "allan": "答案：fulfil management system policy（實現管理系統政策）\n完整句子為：「在管理系統中維持法規遵循的目的，是為了實現管理系統政策。」依 ISO/IEC 27001:2022 5.2，最高管理階層建立的資訊安全政策應包含滿足適用資訊安全相關要求的承諾，而 4.2 要求組織確定利害相關者的要求，其中包括法律、法規及契約要求。因此，法規遵循是落實政策承諾的一環，屬於管理系統內在的要求。\n其他選項：「與主管機關保持良好關係」與「避免罰款」只是遵法可能帶來的附帶效果；「通過稽核」更是常見的錯誤動機，稽核只是查證手段，不是目的。\n稽核實務提醒：如果受稽核方把合規說成「為了過稽核」，往往代表管理系統尚未真正內化到營運中。"
  },
  {
@@ -10524,6 +11464,23 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "“The purpose of a management system audit is to ",
+    {
+     "blank": "evaluate"
+    },
+    " the performance of an organisation’s management system.”"
+   ],
+   "pool": [
+    "improve",
+    "manage",
+    "evaluate",
+    "research"
+   ]
+  },
   "allan": "答案：evaluate（評估）\n完整句子為：管理系統稽核的目的是「評估」組織管理系統的績效。ISO 19011:2018 將稽核定義為取得客觀證據並予以客觀評估，以判定符合稽核準則程度的過程。\nimprove 改進是組織自己的責任（ISO/IEC 27001 條款 10），稽核員不負責改善；manage 管理屬管理階層職能；research 研究不是稽核的目的，稽核講求依準則查證而非探索研究。\n稽核實務提醒：稽核員是評估者，不是顧問，維持這個角色界線才能保持獨立性。"
  },
  {
@@ -10743,6 +11700,38 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "Please match the following situations to the type of audit required.",
+   "rows": [
+    {
+     "label": "1.",
+     "text": "Top management requests auditors from the organisation's compliance department to audit the production process in order to ensure the final product meets quality requirements",
+     "answer": "First-party audit"
+    },
+    {
+     "label": "2.",
+     "text": "Auditors from the buyer's organisation audit their raw material supplier to ensure the supply fulfils the order and contract",
+     "answer": "Second-party audit"
+    },
+    {
+     "label": "3.",
+     "text": "Auditors from an independent certification body conduct an audit of the organisation to verify conformity with an ISO Standard for certification purposes",
+     "answer": "Third-party audit"
+    },
+    {
+     "label": "4.",
+     "text": "The organisation has been audited against two management system standards in one audit",
+     "answer": "Combined audit"
+    }
+   ],
+   "pool": [
+    "First-party audit",
+    "Second-party audit",
+    "Third-party audit",
+    "Combined audit"
+   ]
+  },
   "allan": "答案：1 第一方稽核、2 第二方稽核、3 第三方稽核、4 結合稽核\n配對邏輯依 ISO 19011:2018 對稽核類型的區分：1 高階管理階層請組織內部法遵部門稽核生產流程，是組織對自己的稽核，即第一方（內部）稽核；2 買方稽核其原料供應商，是對有利害關係的外部提供者稽核，屬第二方稽核；3 獨立驗證機構為驗證目的進行稽核，屬第三方稽核；4 一次稽核同時對照兩個管理系統標準，就是結合稽核。\n要注意結合稽核與聯合稽核的差異：結合是一個受稽核方、多個標準；聯合是多個稽核組織共同稽核一個受稽核方。\n稽核實務提醒：判斷關鍵在「誰委託、誰執行、對照什麼準則」。"
  },
  {
@@ -10844,6 +11833,36 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "Select the words that best complete the sentence to describe an audit finding.",
+   "segments": [
+    "“An audit finding is the result of the ",
+    {
+     "blank": "evaluation"
+    },
+    " of the collected audit ",
+    {
+     "blank": "evidence"
+    },
+    " against audit ",
+    {
+     "blank": "criteria"
+    },
+    ".”"
+   ],
+   "pool": [
+    "statement",
+    "evaluation",
+    "objectives",
+    "responses",
+    "evidence",
+    "conclusions",
+    "criteria",
+    "gathering",
+    "recommendations"
+   ]
+  },
   "allan": "答案：evaluation、evidence、criteria\n完整句子為：稽核發現是將所蒐集的稽核「證據」對照稽核「準則」進行「評估」的結果。這正是 ISO 19011:2018 條款 3.10 對稽核發現的定義。\n其他干擾字：conclusions 稽核結論是考量所有發現後的產出；objectives 稽核目標是規劃輸入；gathering 只是蒐集動作，尚未比對；statement、responses、recommendations 皆與定義無關，且第三方稽核不提供建議。\n稽核實務提醒：撰寫稽核發現時三要素缺一不可：準則、證據、判定結果。"
  },
  {
@@ -11013,6 +12032,29 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "",
+   "segments": [
+    "“An accredited certification assures the ",
+    {
+     "blank": "competence of the audit team"
+    },
+    " of the ",
+    {
+     "blank": "decision made by the certification body"
+    },
+    ".”"
+   ],
+   "pool": [
+    "accuracy",
+    "audit report",
+    "clarity",
+    "competence of the audit team",
+    "decision made by the certification body",
+    "reliability"
+   ]
+  },
   "allan": "答案：competence of the audit team、decision made by the certification body\n完整句子為：經認證的驗證，保證了稽核團隊的「適任性」以及驗證機構所作「驗證決定」的可信度。認證機構依 ISO/IEC 17011 評鑑驗證機構，確認其符合 ISO/IEC 17021-1:2015 與 ISO/IEC 27006 的要求，包括人員能力管理與公正、一致的驗證決定流程。\n其他干擾字如 accuracy、clarity、reliability、audit report 都只是報告品質的描述，認證並不擔保報告本身正確無誤，而是擔保做出判斷的人與過程。\n稽核實務提醒：客戶選擇驗證機構時，應確認其證書帶有認可的認證標誌。"
  },
  {
@@ -11093,6 +12135,50 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "rows": [
+    {
+     "label": "1st",
+     "text": "",
+     "answer": "Create and maintain information security risk criteria"
+    },
+    {
+     "label": "2nd",
+     "text": "",
+     "answer": "Identify the risks that need to be considered when planning for the information security management system"
+    },
+    {
+     "label": "3rd",
+     "text": "",
+     "answer": "Assess the potential consequences that would arise if the risk were to materialise"
+    },
+    {
+     "label": "4th",
+     "text": "",
+     "answer": "Select appropriate risk treatment options"
+    },
+    {
+     "label": "5th",
+     "text": "",
+     "answer": "Carry out information security risk assessments at planned intervals"
+    },
+    {
+     "label": "6th",
+     "text": "",
+     "answer": "Consider the results of risk assessment and the status of the risk treatment plan at management review"
+    }
+   ],
+   "pool": [
+    "Create and maintain information security risk criteria",
+    "Identify the risks that need to be considered when planning for the information security management system",
+    "Assess the potential consequences that would arise if the risk were to materialise",
+    "Select appropriate risk treatment options",
+    "Carry out information security risk assessments at planned intervals",
+    "Consider the results of risk assessment and the status of the risk treatment plan at management review"
+   ]
+  },
   "allan": "答案：建立並維持風險準則 → 識別規劃 ISMS 時需考量的風險 → 評估風險發生時的潛在後果 → 選擇適當風險處理選項 → 依規劃期間執行風險評鑑 → 管理審查時考量風險評鑑結果與風險處理計畫狀態\n此排序依 ISO/IEC 27001:2022 條文出現的先後：條款 6.1.1 規劃 ISMS 時考量風險與機會；6.1.2 a) 建立風險準則、c) 識別風險、d) 分析風險（評估後果）；6.1.3 a) 選擇風險處理選項；8.2 依規劃期間或重大變更時執行風險評鑑；9.3.2 管理審查輸入包括風險評鑑結果與風險處理計畫狀態。\n需留意風險準則在條款 6.1.2 a) 列為第一項，所以排在最前面。\n稽核實務提醒：風險管理稽核可沿 6.1、8.2、8.3、9.3 一路串起來查證。"
  },
  {
@@ -11507,6 +12593,30 @@
   ],
   "type": "match",
   "source": "V15.35",
+  "dnd": {
+   "layout": "sentence",
+   "prompt": "Select the words that best complete the sentence below to describe a third-party audit plan.",
+   "segments": [
+    "“An audit plan is a statement of the intent of the audit team to ",
+    {
+     "blank": "assess"
+    },
+    " all areas of the company with a view to determining a ",
+    {
+     "blank": "recommendation"
+    },
+    " for certification approval.”"
+   ],
+   "pool": [
+    "recommendation",
+    "verdict",
+    "permit",
+    "report",
+    "assess",
+    "inspect",
+    "question"
+   ]
+  },
   "allan": "答案：assess、recommendation\n完整句子為：稽核計畫是稽核團隊表明其「評估」公司各領域、以決定是否作出驗證核准「建議」的意圖聲明。ISO 19011:2018 條款 6.3.2 指出稽核計畫說明稽核活動與安排；在第三方稽核中，稽核團隊的產出是驗證建議，最終驗證決定由驗證機構作出（ISO/IEC 17021-1:2015）。\nverdict 判決、permit 許可、report 報告都不是稽核團隊的決定權限；inspect 檢驗與 question 質詢的範圍不如 assess 完整，稽核是依證據對照準則進行評估。\n稽核實務提醒：在結束會議上說的是「建議」，不是「通過」，這個用字界線要守住。"
  },
  {
@@ -11993,7 +13103,7 @@
   "id": 1003,
   "no": 3,
   "source": "IRCA",
-  "stem": "以下選項顯示第三方稽核中涉及的關鍵措施。然而，它們的順序並不正確。請依據進行第三方稽核時應的順序，在表格中進行排序。這些階段將發生在驗證申請後。\n\n待排序項目：\n・任命稽核組長\n・審查驗證申請書\n・文件審查\n・申請驗證\n・進行稽核\n・頒發證書",
+  "stem": "以下選項顯示第三方稽核中涉及的關鍵措施。然而，它們的順序並不正確。請依據進行第三方稽核時應的順序，在表格中進行排序。這些階段將發生在驗證申請後。",
   "options": [],
   "answer": [],
   "explanation": "",
@@ -12003,6 +13113,54 @@
   ],
   "type": "match",
   "answerText": "1. 申請驗證\n2. 審查驗證申請書\n3. 任命稽核組長\n4. 文件審查\n5. 進行稽核\n6. 頒發證書",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "headers": [
+    "順序",
+    "措施"
+   ],
+   "rows": [
+    {
+     "label": "1.",
+     "text": "",
+     "answer": "申請驗證"
+    },
+    {
+     "label": "2.",
+     "text": "",
+     "answer": "審查驗證申請書"
+    },
+    {
+     "label": "3.",
+     "text": "",
+     "answer": "任命稽核組長"
+    },
+    {
+     "label": "4.",
+     "text": "",
+     "answer": "文件審查"
+    },
+    {
+     "label": "5.",
+     "text": "",
+     "answer": "進行稽核"
+    },
+    {
+     "label": "6.",
+     "text": "",
+     "answer": "頒發證書"
+    }
+   ],
+   "pool": [
+    "任命稽核組長",
+    "審查驗證申請書",
+    "文件審查",
+    "申請驗證",
+    "進行稽核",
+    "頒發證書"
+   ]
+  },
   "allan": "答案：申請驗證 → 審查驗證申請書 → 任命稽核組長 → 文件審查 → 進行稽核 → 頒發證書\n這是 ISO/IEC 17021-1:2015 第 9 章驗證過程的邏輯順序：客戶先提出申請；驗證機構依 9.1.2 審查申請，確認範圍、場所、人數等資訊足以規劃稽核；接著依能力要求指派稽核團隊與稽核組長；稽核組長進行文件審查（初次驗證中屬第一階段工作的一部分）以確認是否具備進行稽核的條件；之後執行稽核；最後由驗證機構依 9.5 由未參與稽核的人員做出驗證決定並頒發證書。\n常見錯誤是把任命稽核組長放在審查申請之前，但未審查申請前無法判斷需要何種能力與多少稽核人天。\n稽核實務提醒：證書是驗證機構的決定，不是稽核組長在結束會議上發的。"
  },
  {
@@ -12267,7 +13425,7 @@
   "id": 1010,
   "no": 10,
   "source": "IRCA",
-  "stem": "ISO 19011 要求得確定每次稽核與稽核方案的相關風險。在以遠距(視訊)稽核的情況下，請配對過程與其相關風險。\n\n描述：\n1. 網路連線失敗\n2. 稽核小組整體能力不足\n3. 未能設定相關的稽核目標、範圍和準則\n4. 未能建立抽樣相關的規範\n5. 允許的稽核時間和資訊科技相關資源都不足\n6. 稽核員和受稽核方之間缺乏協調\n\n可選項目：抽樣過程、溝通過程、稽核活動、稽核規劃、資源分配、選擇稽核小組的成員",
+  "stem": "ISO 19011 要求得確定每次稽核與稽核方案的相關風險。在以遠距(視訊)稽核的情況下，請配對過程與其相關風險。",
   "options": [],
   "answer": [],
   "explanation": "",
@@ -12277,6 +13435,54 @@
   ],
   "type": "match",
   "answerText": "1. 網路連線失敗 → 稽核活動\n2. 稽核小組整體能力不足 → 選擇稽核小組的成員\n3. 未能設定相關的稽核目標、範圍和準則 → 稽核規劃\n4. 未能建立抽樣相關的規範 → 抽樣過程\n5. 允許的稽核時間和資訊科技相關資源都不足 → 資源分配\n6. 稽核員和受稽核方之間缺乏協調 → 溝通過程",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "headers": [
+    "風險",
+    "過程"
+   ],
+   "rows": [
+    {
+     "label": "",
+     "text": "網路連線失敗",
+     "answer": "稽核活動"
+    },
+    {
+     "label": "",
+     "text": "稽核小組整體能力不足",
+     "answer": "選擇稽核小組的成員"
+    },
+    {
+     "label": "",
+     "text": "未能設定相關的稽核目標、範圍和準則",
+     "answer": "稽核規劃"
+    },
+    {
+     "label": "",
+     "text": "未能建立抽樣相關的規範",
+     "answer": "抽樣過程"
+    },
+    {
+     "label": "",
+     "text": "允許的稽核時間和資訊科技相關資源都不足",
+     "answer": "資源分配"
+    },
+    {
+     "label": "",
+     "text": "稽核員和受稽核方之間缺乏協調",
+     "answer": "溝通過程"
+    }
+   ],
+   "pool": [
+    "資源分配",
+    "稽核規劃",
+    "溝通過程",
+    "稽核活動",
+    "抽樣過程",
+    "選擇稽核小組的成員"
+   ]
+  },
   "allan": "答案：網路連線失敗 → 稽核活動；稽核小組整體能力不足 → 選擇稽核小組的成員；未設定稽核目標、範圍與準則 → 稽核規劃；未建立抽樣規範 → 抽樣過程；時間與 IT 資源不足 → 資源分配；稽核員與受稽核方缺乏協調 → 溝通過程\nISO 19011:2018 第 5.3 節要求稽核方案管理者識別與稽核方案相關的風險，列舉的風險來源正是規劃、資源、稽核團隊選擇、溝通、實施等面向。配對邏輯是看風險發生在哪個過程：連線中斷發生在執行稽核活動時；能力不足源於選擇團隊成員；目標範圍準則未設定是規劃失誤；抽樣規範屬抽樣過程；時間與 IT 資源屬資源分配；協調不足則是溝通問題。\n稽核實務提醒：遠距稽核前的連線與工具測試，是降低稽核活動風險最有效的做法。"
  },
  {
@@ -13327,7 +14533,7 @@
   "id": 1036,
   "no": 36,
   "source": "IRCA",
-  "stem": "你是一位經驗豐富的第三方稽核組長，正在引導培訓中的稽核員。她要求你確認以下每個資訊安全控制措施，並且列入她的最終報告中，應根據 ISO/IEC 27002:2022 的四個控制主題，記錄每個資訊安全控制措施。\n請將下列每個控制項與其所屬的控制項主題做類別配對：\n\n描述：\n1. 應管理對外部網站的訪問，以減少惡意內容的暴露。\n2. 應根據組織的需要、定義和分配資訊安全角色和職責。\n3. 組織應提供一種機制，讓人員透過適當的管道，可及時報告觀察到或可疑的資訊安全事件。\n4. 應制定並適當執行紙張和移動硬碟的桌面淨空規則，以及資訊處理設施的螢幕淨空規則。\n\n可選項目：人員控制、實體控制、技術控制、組織控制",
+  "stem": "你是一位經驗豐富的第三方稽核組長，正在引導培訓中的稽核員。她要求你確認以下每個資訊安全控制措施，並且列入她的最終報告中，應根據 ISO/IEC 27002:2022 的四個控制主題，記錄每個資訊安全控制措施。\n請將下列每個控制項與其所屬的控制項主題做類別配對：",
   "options": [],
   "answer": [],
   "explanation": "",
@@ -13337,6 +14543,42 @@
   ],
   "type": "match",
   "answerText": "1. 應管理對外部網站的訪問，以減少惡意內容的暴露。 → 技術控制\n2. 應根據組織的需要、定義和分配資訊安全角色和職責。 → 組織控制\n3. 組織應提供一種機制，讓人員透過適當的管道，可及時報告觀察到或可疑的資訊安全事件。 → 人員控制\n4. 應制定並適當執行紙張和移動硬碟的桌面淨空規則，以及資訊處理設施的螢幕淨空規則。 → 實體控制",
+  "dnd": {
+   "layout": "rows",
+   "prompt": "",
+   "headers": [
+    "控制措施",
+    "控制主題"
+   ],
+   "rows": [
+    {
+     "label": "",
+     "text": "應管理對外部網站的訪問，以減少惡意內容的暴露。",
+     "answer": "技術控制"
+    },
+    {
+     "label": "",
+     "text": "應根據組織的需要、定義和分配資訊安全角色和職責。",
+     "answer": "組織控制"
+    },
+    {
+     "label": "",
+     "text": "組織應提供一種機制，讓人員透過適當的管道，可及時報告觀察到或可疑的資訊安全事件。",
+     "answer": "人員控制"
+    },
+    {
+     "label": "",
+     "text": "應制定並適當執行紙張和移動硬碟的桌面淨空規則，以及資訊處理設施的螢幕淨空規則。",
+     "answer": "實體控制"
+    }
+   ],
+   "pool": [
+    "組織控制",
+    "人員控制",
+    "實體控制",
+    "技術控制"
+   ]
+  },
   "allan": "答案：管理外部網站存取 → 技術控制；定義與分配資訊安全角色與職責 → 組織控制；資訊安全事件通報機制 → 人員控制；桌面淨空與螢幕淨空 → 實體控制\nISO/IEC 27002:2022 將 93 項控制分為四大主題：組織（第 5 章）、人員（第 6 章）、實體（第 7 章）、技術（第 8 章）。對應如下：網頁過濾為 8.23，屬技術控制；資訊安全角色與責任為 5.2，屬組織控制；資訊安全事件通報為 6.8，屬人員控制；桌面淨空與螢幕淨空為 7.7，屬實體控制。\n易混淆點在於 6.8 事件通報看似組織流程，但它要求的是人員通報的行為，因此歸在人員控制；7.7 雖涉及螢幕，但本質是實體工作環境的管理。\n稽核實務提醒：熟記四大主題的章節對應，報告中引用控制編號才不會出錯。"
  },
  {

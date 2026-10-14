@@ -1,0 +1,1280 @@
+[
+ {
+  "id": 14,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "",
+    "text": "The strategy chosen to respond to a specific information security risk",
+    "answer": "This is a definition of information security risk treatment"
+   },
+   {
+    "label": "",
+    "text": "The effect of uncertainty on information security objectives",
+    "answer": "This is a definition of information security risk"
+   },
+   {
+    "label": "",
+    "text": "The requirements against which information security risks are evaluated",
+    "answer": "This is a definition of information security risk criteria"
+   },
+   {
+    "label": "",
+    "text": "A definition of the overall level of information security risk that is considered to be tolerable",
+    "answer": "This is a definition of information security risk acceptance criteria"
+   }
+  ],
+  "pool": [
+   "This is a definition of information security risk",
+   "This is a definition of information security risk criteria",
+   "This is a definition of information security risk acceptance criteria",
+   "This is a definition of information security risk treatment"
+  ]
+ },
+ {
+  "id": 37,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "1.",
+    "text": "Also known as a first party audit, this type of audit involves an organisation auditing itself",
+    "answer": "An internal audit"
+   },
+   {
+    "label": "2.",
+    "text": "A third party audit which assesses an organisation's conformity with every clause of a Standard",
+    "answer": "A certification audit"
+   },
+   {
+    "label": "3.",
+    "text": "An audit whose scope requires the assessment of two or more Standards",
+    "answer": "A combined audit"
+   },
+   {
+    "label": "4.",
+    "text": "An audit carried out at a single auditee by two or more auditing organisations",
+    "answer": "A joint audit"
+   },
+   {
+    "label": "5.",
+    "text": "An audit carried out to verify the effectiveness of corrections, corrective action, and agreed opportunities for improvement",
+    "answer": "A follow-up audit"
+   },
+   {
+    "label": "6.",
+    "text": "An audit forming part of a programme of certification body audits in which elements of the auditees' information system management system will be examined",
+    "answer": "A surveillance audit"
+   }
+  ],
+  "pool": [
+   "A joint audit",
+   "A surveillance audit",
+   "An internal audit",
+   "A combined audit",
+   "A follow-up audit",
+   "A certification audit"
+  ]
+ },
+ {
+  "id": 39,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "",
+    "text": "An auditor using a copy of ISO/IEC 27001:2022 to check that its requirements are met",
+    "answer": "This example relates to the use of audit criteria to determine conformity or nonconformity"
+   },
+   {
+    "label": "",
+    "text": "An auditor's note that the auditee is not adhering to its' clear desk policy",
+    "answer": "This example relates to the identification of an audit finding"
+   },
+   {
+    "label": "",
+    "text": "An auditor making a decision regarding the auditee's conformity or otherwise to criteria",
+    "answer": "This description relates to the determination of an audit conclusion"
+   },
+   {
+    "label": "",
+    "text": "An auditor examining verifiable records relevant to the audit process",
+    "answer": "This example relates to relates to the collection of audit evidence"
+   }
+  ],
+  "pool": [
+   "This example relates to the identification of an audit finding",
+   "This example relates to the use of audit criteria to determine conformity or nonconformity",
+   "This description relates to the determination of an audit conclusion",
+   "This example relates to relates to the collection of audit evidence"
+  ]
+ },
+ {
+  "id": 52,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "\"In a third-party audit, ",
+   {
+    "blank": "an observation"
+   },
+   " is an indication of ",
+   {
+    "blank": "conformity"
+   },
+   " that organisation is not required to take action.\""
+  ],
+  "pool": [
+   "nonconformity",
+   "an observation",
+   "a recommendation",
+   "criteria",
+   "conformity",
+   "a finding"
+  ]
+ },
+ {
+  "id": 59,
+  "layout": "sentence",
+  "prompt": "Select the word that best completes the sentence:",
+  "segments": [
+   "\"A purpose of retaining documented information is to ",
+   {
+    "blank": "demonstrate"
+   },
+   " conformity with the requirements of a management system standard.\""
+  ],
+  "pool": [
+   "demonstrate",
+   "audit",
+   "maintain",
+   "certify"
+  ]
+ },
+ {
+  "id": 64,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "1.",
+    "text": "",
+    "answer": "Establish information security criteria"
+   },
+   {
+    "label": "2.",
+    "text": "",
+    "answer": "Identify the information security risks"
+   },
+   {
+    "label": "3.",
+    "text": "",
+    "answer": "Analyse the information security risks"
+   },
+   {
+    "label": "4.",
+    "text": "",
+    "answer": "Evaluate the information security risks"
+   }
+  ],
+  "pool": [
+   "Identify the information security risks",
+   "Evaluate the information security risks",
+   "Analyse the information security risks",
+   "Establish information security criteria"
+  ]
+ },
+ {
+  "id": 97,
+  "layout": "sentence",
+  "prompt": "Select the words that best complete the sentence:",
+  "segments": [
+   "\"The purpose of a third-party audit is to ",
+   {
+    "blank": "evaluate"
+   },
+   " an organisation's ",
+   {
+    "blank": "management system"
+   },
+   " to inform ",
+   {
+    "blank": "a certification"
+   },
+   " decision.\""
+  ],
+  "pool": [
+   "approve",
+   "inspect",
+   "a compliance",
+   "an accreditation",
+   "products",
+   "evaluate",
+   "management system",
+   "a certification",
+   "processes"
+  ]
+ },
+ {
+  "id": 102,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "Step 1",
+    "text": "Incident logging",
+    "answer": null
+   },
+   {
+    "label": "Step 2",
+    "text": "",
+    "answer": "Incident categorisation – determine whether the incident is a hardware issue, network issue or software issue"
+   },
+   {
+    "label": "Step 3",
+    "text": "",
+    "answer": "Incident prioritisation – classify the incident as critical, high, medium, low"
+   },
+   {
+    "label": "Step 4",
+    "text": "",
+    "answer": "Incident assignment – incident is passed to the individual best suited to resolve it"
+   },
+   {
+    "label": "Step 5",
+    "text": "",
+    "answer": "Task creation and management – identification and coordination of work needed to resolve the incident"
+   },
+   {
+    "label": "Step 6",
+    "text": "",
+    "answer": "SLA management and escalation – ensure any service level agreements are adhered to whist resolution is being implemented. If a breach looks likely, escalate to secure more resources"
+   },
+   {
+    "label": "Step 7",
+    "text": "",
+    "answer": "Incident resolution – a temporary workaround or permanent resolution has been identified"
+   },
+   {
+    "label": "Step 8",
+    "text": "Incident closure",
+    "answer": null
+   }
+  ],
+  "pool": [
+   "Incident prioritisation – classify the incident as critical, high, medium, low",
+   "Task creation and management – identification and coordination of work needed to resolve the incident",
+   "SLA management and escalation – ensure any service level agreements are adhered to whist resolution is being implemented. If a breach looks likely, escalate to secure more resources",
+   "Incident resolution – a temporary workaround or permanent resolution has been identified",
+   "Incident assignment – incident is passed to the individual best suited to resolve it",
+   "Incident categorisation – determine whether the incident is a hardware issue, network issue or software issue"
+  ]
+ },
+ {
+  "id": 111,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "\"When reviewing the ",
+   {
+    "blank": "effectiveness"
+   },
+   " of action taken in response to a ",
+   {
+    "blank": "nonconformity"
+   },
+   ", an auditor seeks evidence of ",
+   {
+    "blank": "change"
+   },
+   " that will ",
+   {
+    "blank": "prevent"
+   },
+   " recurrence of the issue.\""
+  ],
+  "pool": [
+   "repair",
+   "assurance",
+   "responsibility",
+   "effectiveness",
+   "nonconformity",
+   "prevent",
+   "change",
+   "problem"
+  ]
+ },
+ {
+  "id": 117,
+  "layout": "rows",
+  "prompt": "Match the correct responsibility with each participant of a second-party audit:",
+  "headers": [
+   "Responsibility",
+   "Audit Participant"
+  ],
+  "rows": [
+   {
+    "label": "",
+    "text": "Prepares the audit report",
+    "answer": "Audit Team Leader"
+   },
+   {
+    "label": "",
+    "text": "Prepares audit checklists for use during the audit",
+    "answer": "Auditor"
+   },
+   {
+    "label": "",
+    "text": "Supports an auditor and provides feedback on their experience",
+    "answer": "Auditor in training"
+   },
+   {
+    "label": "",
+    "text": "Follows-up on audit findings within an agreed timeframe",
+    "answer": "Auditee"
+   },
+   {
+    "label": "",
+    "text": "Provides an independent account of the audit but does not participate in the audit",
+    "answer": "Observer"
+   },
+   {
+    "label": "",
+    "text": "Escorts the auditors but does not participate in the audit",
+    "answer": "Guide"
+   }
+  ],
+  "pool": [
+   "Audit Team Leader",
+   "Auditor in training",
+   "Auditor",
+   "Auditee",
+   "Guide",
+   "Observer"
+  ]
+ },
+ {
+  "id": 141,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "\"Audit resources include the ",
+   {
+    "blank": "essential"
+   },
+   " resources to complete the audit programme as well as ",
+   {
+    "blank": "competent"
+   },
+   " personnel to achieve the audit objectives.\""
+  ],
+  "pool": [
+   "certification",
+   "technological",
+   "competent",
+   "management",
+   "backup",
+   "essential"
+  ]
+ },
+ {
+  "id": 145,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "It is the sole responsibility of a third-party audit team leader to ",
+   {
+    "blank": "act on behalf of the certification body"
+   },
+   "."
+  ],
+  "pool": [
+   "select the audit team members",
+   "act on behalf of the certification body",
+   "compile checklists for the audit team",
+   "identify non-conformances in the management system"
+  ]
+ },
+ {
+  "id": 148,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "",
+    "text": "Appoint an audit team leader",
+    "answer": null
+   },
+   {
+    "label": "",
+    "text": "",
+    "answer": "Prepare the audit checklist"
+   },
+   {
+    "label": "",
+    "text": "",
+    "answer": "Gather objective evidence"
+   },
+   {
+    "label": "",
+    "text": "",
+    "answer": "Review audit evidence"
+   },
+   {
+    "label": "",
+    "text": "",
+    "answer": "Document findings"
+   },
+   {
+    "label": "",
+    "text": "Issue the report",
+    "answer": null
+   }
+  ],
+  "pool": [
+   "Prepare the audit checklist",
+   "Gather objective evidence",
+   "Review audit evidence",
+   "Document findings"
+  ]
+ },
+ {
+  "id": 184,
+  "layout": "rows",
+  "prompt": "",
+  "headers": [
+   "Audit Evidence",
+   "ISO/IEC 27001:2022 Requirements"
+  ],
+  "rows": [
+   {
+    "label": "",
+    "text": "The top management has signed and approved the ISMS policy (Document reference ID: ISMS_L1_01, version 1.3), mobile device policy (Document reference ID: ISMS_L2_07, version 1, release 4), and information security objectives are linked to Annex A's information security control objectives.",
+    "answer": "Clause 5.1 a"
+   },
+   {
+    "label": "",
+    "text": "Testing on 5 medical staff's mobile phones, all mobile phones are pin code protected screen lock and the 15 digits IME (International Mobile Equipment Identity) are registered in the asset register (Document reference ID: ISMS_L4_01, version 2.1).",
+    "answer": "A.8.1"
+   },
+   {
+    "label": "",
+    "text": "Interview with IT staff (employee ID: NH-1268); he is well informed and understood the mobile device policy. You checked his mobile phone and found it is 6 digits pin code protected and NO resident's data is stored.",
+    "answer": "Clause 7.3"
+   },
+   {
+    "label": "",
+    "text": "Interview with human resource manager; sampling on medical staff's information security roles and responsibilities are assigned in the job description (Document reference ID: ISMS_L4_04, version 1.0).",
+    "answer": "Clause 5.3"
+   }
+  ],
+  "pool": [
+   "Clause 5.1 a",
+   "Clause 7.3",
+   "A.8.1",
+   "Clause 5.3"
+  ]
+ },
+ {
+  "id": 189,
+  "layout": "rows",
+  "prompt": "A key audit process is the way auditors gather information and determine the findings' characteristics. Put the actions listed in the correct order to complete this process. The last one has been done for you.",
+  "headers": [
+   "Actions"
+  ],
+  "rows": [
+   {
+    "label": "1.",
+    "text": "Determine source of information",
+    "answer": null
+   },
+   {
+    "label": "2.",
+    "text": "Collect by means of appropriate sampling",
+    "answer": null
+   },
+   {
+    "label": "3.",
+    "text": "",
+    "answer": "Reviewing"
+   },
+   {
+    "label": "4.",
+    "text": "",
+    "answer": "Audit evidence"
+   },
+   {
+    "label": "5.",
+    "text": "",
+    "answer": "Evaluating against audit criteria"
+   },
+   {
+    "label": "6.",
+    "text": "",
+    "answer": "Audit findings"
+   },
+   {
+    "label": "7.",
+    "text": "Audit conclusions",
+    "answer": null
+   }
+  ],
+  "pool": [
+   "Audit evidence",
+   "Reviewing",
+   "Evaluating against audit criteria",
+   "Audit findings"
+  ]
+ },
+ {
+  "id": 199,
+  "layout": "rows",
+  "prompt": "An organisation is looking for management system initial certification. Please identify the sequence of the activities to be undertaken by the organisation.",
+  "rows": [
+   {
+    "label": "1.",
+    "text": "Establish the management system",
+    "answer": null
+   },
+   {
+    "label": "2.",
+    "text": "",
+    "answer": "Plan the audit programme"
+   },
+   {
+    "label": "3.",
+    "text": "",
+    "answer": "Conduct supplier audits"
+   },
+   {
+    "label": "4.",
+    "text": "",
+    "answer": "Hold a Management Review"
+   },
+   {
+    "label": "5.",
+    "text": "",
+    "answer": "Engage a Certification Body for stage 1 and stage 2 audits"
+   }
+  ],
+  "pool": [
+   "Complete any corrective actions",
+   "Conduct supplier audits",
+   "Engage a Certification Body for stage 1 and stage 2 audits",
+   "Plan the audit programme",
+   "Conduct internal audits",
+   "Hold a Management Review"
+  ]
+ },
+ {
+  "id": 206,
+  "layout": "sentence",
+  "prompt": "Select the words that best complete the sentence to describe an audit finding.",
+  "segments": [
+   "\"An audit finding is the result of the ",
+   {
+    "blank": "evaluation"
+   },
+   " of the collected audit ",
+   {
+    "blank": "evidence"
+   },
+   " against audit ",
+   {
+    "blank": "criteria"
+   },
+   ".\""
+  ],
+  "pool": [
+   "statement",
+   "objectives",
+   "conclusions",
+   "responses",
+   "gathering",
+   "recommendations",
+   "criteria",
+   "evidence",
+   "evaluation"
+  ]
+ },
+ {
+  "id": 208,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "The purpose of ",
+   {
+    "blank": "review"
+   },
+   " is to ",
+   {
+    "blank": "assess"
+   },
+   " the information security management system at ",
+   {
+    "blank": "regular"
+   },
+   " intervals to ensure it's continuing ",
+   {
+    "blank": "suitability"
+   },
+   ", adequacy and effectiveness."
+  ],
+  "pool": [
+   "planned",
+   "assess",
+   "Risk Assessment",
+   "efficiency",
+   "suitability",
+   "review",
+   "Risk Management",
+   "regular",
+   "Management Review",
+   "random"
+  ]
+ },
+ {
+  "id": 215,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "",
+    "text": "A process by which the nature of the risk is determined along with its probability and impact",
+    "answer": "Risk analysis"
+   },
+   {
+    "label": "",
+    "text": "A process by which a risk is controlled at all stages of its life cycle by means of the application of organisational policies, procedures and practices",
+    "answer": "Risk management"
+   },
+   {
+    "label": "",
+    "text": "A process by which a risk is recognised and described",
+    "answer": "Risk identification"
+   },
+   {
+    "label": "",
+    "text": "A process by which the impact and /or probability of a risk is compared against risk criteria to determine if it is tolerable",
+    "answer": "Risk evaluation"
+   },
+   {
+    "label": "",
+    "text": "A process by which the impact and/or probability of a risk is reduced by means of the application of controls",
+    "answer": "Risk mitigation"
+   },
+   {
+    "label": "",
+    "text": "A process by which a risk is passed to a third party, for example through obtaining appropriate insurance",
+    "answer": "Risk transfer"
+   }
+  ],
+  "pool": [
+   "Risk transfer",
+   "Risk analysis",
+   "Risk identification",
+   "Risk management",
+   "Risk mitigation",
+   "Risk evaluation"
+  ]
+ },
+ {
+  "id": 228,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "1.",
+    "text": "The organisation or person requesting an audit",
+    "answer": "Audit client"
+   },
+   {
+    "label": "2.",
+    "text": "The organisation as a whole or parts thereof being audited",
+    "answer": "Auditee"
+   },
+   {
+    "label": "3.",
+    "text": "A person who provides specific knowledge or expertise relating to the organisation, activity, process, product, service or discipline to be audited",
+    "answer": "Technical expert"
+   },
+   {
+    "label": "4.",
+    "text": "A person who accompanies the audit team but does not act as an auditor",
+    "answer": "Observer"
+   }
+  ],
+  "pool": [
+   "Audit team leader",
+   "Audit client",
+   "Observer",
+   "Auditee",
+   "Technical expert",
+   "Auditor"
+  ]
+ },
+ {
+  "id": 231,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "\"The purpose of including access rights in an information management system to ISO/IEC 27001:2022 is to provide, review, modify and remove these ",
+   {
+    "blank": "permissions"
+   },
+   " in accordance with the organisation's ",
+   {
+    "blank": "policy"
+   },
+   " and ",
+   {
+    "blank": "rules"
+   },
+   " for access ",
+   {
+    "blank": "control"
+   },
+   ".\""
+  ],
+  "pool": [
+   "guidance",
+   "rules",
+   "process",
+   "options",
+   "policy",
+   "rights",
+   "permissions",
+   "control"
+  ]
+ },
+ {
+  "id": 234,
+  "layout": "rows",
+  "prompt": "In the context of a management system audit, please identify the sequence of a typical process of collecting and verifying information. The first one has been done for you.",
+  "rows": [
+   {
+    "label": "1.",
+    "text": "Identifying the source of information",
+    "answer": null
+   },
+   {
+    "label": "2.",
+    "text": "",
+    "answer": "Gathering audit evidence"
+   },
+   {
+    "label": "3.",
+    "text": "",
+    "answer": "Sampling the available data"
+   },
+   {
+    "label": "4.",
+    "text": "",
+    "answer": "Verifying objective evidence"
+   },
+   {
+    "label": "5.",
+    "text": "",
+    "answer": "Evaluating evidence against the audit criteria"
+   },
+   {
+    "label": "6.",
+    "text": "",
+    "answer": "Recording audit findings"
+   },
+   {
+    "label": "7.",
+    "text": "",
+    "answer": "Making audit conclusions"
+   }
+  ],
+  "pool": [
+   "Sampling the available data",
+   "Evaluating evidence against the audit criteria",
+   "Making audit conclusions",
+   "Verifying objective evidence",
+   "Gathering audit evidence",
+   "Recording audit findings"
+  ]
+ },
+ {
+  "id": 236,
+  "layout": "rows",
+  "prompt": "ISO 19011 Audit Lifecycle:",
+  "rows": [
+   {
+    "label": "Step 1:",
+    "text": "",
+    "answer": "Audit initiation"
+   },
+   {
+    "label": "Step 2:",
+    "text": "",
+    "answer": "Audit preparation"
+   },
+   {
+    "label": "Step 3:",
+    "text": "",
+    "answer": "Conducting the audit"
+   },
+   {
+    "label": "Step 4:",
+    "text": "",
+    "answer": "Preparing and distributing the audit report"
+   },
+   {
+    "label": "Step 5:",
+    "text": "",
+    "answer": "Audit completion"
+   },
+   {
+    "label": "Step 6:",
+    "text": "",
+    "answer": "Audit follow-up"
+   }
+  ],
+  "pool": [
+   "Audit preparation",
+   "Audit initiation",
+   "Audit completion",
+   "Conducting the audit",
+   "Preparing and distributing the audit report",
+   "Audit follow-up"
+  ]
+ },
+ {
+  "id": 239,
+  "layout": "rows",
+  "prompt": "How would you respond? Match the control description to the category.",
+  "rows": [
+   {
+    "label": "",
+    "text": "8.1 Information stored on, processed by, or accessible via user endpoint devices shall be protected",
+    "answer": "Technological control"
+   },
+   {
+    "label": "",
+    "text": "7.8 Equipment shall be sited securely and protected",
+    "answer": "Physical control"
+   },
+   {
+    "label": "",
+    "text": "5.2 Information security roles and responsibilities shall be defined and allocated according to the organisation's needs",
+    "answer": "Organizational control"
+   },
+   {
+    "label": "",
+    "text": "6.7 Security measures shall be implemented when personnel are working remotely to protect information processed, processed, or stored outside the organisation's premises",
+    "answer": "People control"
+   }
+  ],
+  "pool": [
+   "Technological control",
+   "People control",
+   "Organizational control",
+   "Physical control"
+  ]
+ },
+ {
+  "id": 261,
+  "layout": "rows",
+  "prompt": "",
+  "headers": [
+   "Descriptions",
+   "Auditor's characteristics"
+  ],
+  "rows": [
+   {
+    "label": "",
+    "text": "Actively observing surroundings/activities",
+    "answer": "Observant"
+   },
+   {
+    "label": "",
+    "text": "Fair, truthful, sincere, honest, discreet",
+    "answer": "Ethical"
+   },
+   {
+    "label": "",
+    "text": "Persistent and focused on objectives",
+    "answer": "Tenacious"
+   },
+   {
+    "label": "",
+    "text": "Willing to learn from situations",
+    "answer": "Open to improvement"
+   },
+   {
+    "label": "",
+    "text": "Tactful in dealing with individuals",
+    "answer": "Diplomatic"
+   },
+   {
+    "label": "",
+    "text": "Aware of and able to understand situations",
+    "answer": "Perceptive"
+   }
+  ],
+  "pool": [
+   "Tenacious",
+   "Ethical",
+   "Diplomatic",
+   "Observant",
+   "Perceptive",
+   "Open to improvement"
+  ]
+ },
+ {
+  "id": 262,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "“",
+   {
+    "blank": "Audit evidence"
+   },
+   " should be evaluated against the ",
+   {
+    "blank": "Audit criteria"
+   },
+   " in order to determine audit findings.”"
+  ],
+  "pool": [
+   "Audit conclusion",
+   "Audit evidence",
+   "Audit objective",
+   "Audit criteria",
+   "Audit scope"
+  ]
+ },
+ {
+  "id": 293,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "“The purpose of maintaining regulatory compliance in a management system is to ",
+   {
+    "blank": "fulfil management system policy"
+   },
+   ".”"
+  ],
+  "pool": [
+   "keep good relations with authorities",
+   "pass the audit",
+   "avoid financial penalties",
+   "fulfil management system policy"
+  ]
+ },
+ {
+  "id": 328,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "“The purpose of a management system audit is to ",
+   {
+    "blank": "evaluate"
+   },
+   " the performance of an organisation’s management system.”"
+  ],
+  "pool": [
+   "improve",
+   "manage",
+   "evaluate",
+   "research"
+  ]
+ },
+ {
+  "id": 335,
+  "layout": "rows",
+  "prompt": "Please match the following situations to the type of audit required.",
+  "rows": [
+   {
+    "label": "1.",
+    "text": "Top management requests auditors from the organisation's compliance department to audit the production process in order to ensure the final product meets quality requirements",
+    "answer": "First-party audit"
+   },
+   {
+    "label": "2.",
+    "text": "Auditors from the buyer's organisation audit their raw material supplier to ensure the supply fulfils the order and contract",
+    "answer": "Second-party audit"
+   },
+   {
+    "label": "3.",
+    "text": "Auditors from an independent certification body conduct an audit of the organisation to verify conformity with an ISO Standard for certification purposes",
+    "answer": "Third-party audit"
+   },
+   {
+    "label": "4.",
+    "text": "The organisation has been audited against two management system standards in one audit",
+    "answer": "Combined audit"
+   }
+  ],
+  "pool": [
+   "First-party audit",
+   "Second-party audit",
+   "Third-party audit",
+   "Combined audit"
+  ]
+ },
+ {
+  "id": 339,
+  "layout": "sentence",
+  "prompt": "Select the words that best complete the sentence to describe an audit finding.",
+  "segments": [
+   "“An audit finding is the result of the ",
+   {
+    "blank": "evaluation"
+   },
+   " of the collected audit ",
+   {
+    "blank": "evidence"
+   },
+   " against audit ",
+   {
+    "blank": "criteria"
+   },
+   ".”"
+  ],
+  "pool": [
+   "statement",
+   "evaluation",
+   "objectives",
+   "responses",
+   "evidence",
+   "conclusions",
+   "criteria",
+   "gathering",
+   "recommendations"
+  ]
+ },
+ {
+  "id": 345,
+  "layout": "sentence",
+  "prompt": "",
+  "segments": [
+   "“An accredited certification assures the ",
+   {
+    "blank": "competence of the audit team"
+   },
+   " of the ",
+   {
+    "blank": "decision made by the certification body"
+   },
+   ".”"
+  ],
+  "pool": [
+   "accuracy",
+   "audit report",
+   "clarity",
+   "competence of the audit team",
+   "decision made by the certification body",
+   "reliability"
+  ]
+ },
+ {
+  "id": 348,
+  "layout": "rows",
+  "prompt": "",
+  "rows": [
+   {
+    "label": "1st",
+    "text": "",
+    "answer": "Create and maintain information security risk criteria"
+   },
+   {
+    "label": "2nd",
+    "text": "",
+    "answer": "Identify the risks that need to be considered when planning for the information security management system"
+   },
+   {
+    "label": "3rd",
+    "text": "",
+    "answer": "Assess the potential consequences that would arise if the risk were to materialise"
+   },
+   {
+    "label": "4th",
+    "text": "",
+    "answer": "Select appropriate risk treatment options"
+   },
+   {
+    "label": "5th",
+    "text": "",
+    "answer": "Carry out information security risk assessments at planned intervals"
+   },
+   {
+    "label": "6th",
+    "text": "",
+    "answer": "Consider the results of risk assessment and the status of the risk treatment plan at management review"
+   }
+  ],
+  "pool": [
+   "Create and maintain information security risk criteria",
+   "Identify the risks that need to be considered when planning for the information security management system",
+   "Assess the potential consequences that would arise if the risk were to materialise",
+   "Select appropriate risk treatment options",
+   "Carry out information security risk assessments at planned intervals",
+   "Consider the results of risk assessment and the status of the risk treatment plan at management review"
+  ]
+ },
+ {
+  "id": 359,
+  "layout": "sentence",
+  "prompt": "Select the words that best complete the sentence below to describe a third-party audit plan.",
+  "segments": [
+   "“An audit plan is a statement of the intent of the audit team to ",
+   {
+    "blank": "assess"
+   },
+   " all areas of the company with a view to determining a ",
+   {
+    "blank": "recommendation"
+   },
+   " for certification approval.”"
+  ],
+  "pool": [
+   "recommendation",
+   "verdict",
+   "permit",
+   "report",
+   "assess",
+   "inspect",
+   "question"
+  ]
+ },
+ {
+  "id": 1003,
+  "layout": "rows",
+  "prompt": "",
+  "headers": [
+   "順序",
+   "措施"
+  ],
+  "rows": [
+   {
+    "label": "1.",
+    "text": "",
+    "answer": "申請驗證"
+   },
+   {
+    "label": "2.",
+    "text": "",
+    "answer": "審查驗證申請書"
+   },
+   {
+    "label": "3.",
+    "text": "",
+    "answer": "任命稽核組長"
+   },
+   {
+    "label": "4.",
+    "text": "",
+    "answer": "文件審查"
+   },
+   {
+    "label": "5.",
+    "text": "",
+    "answer": "進行稽核"
+   },
+   {
+    "label": "6.",
+    "text": "",
+    "answer": "頒發證書"
+   }
+  ],
+  "pool": [
+   "任命稽核組長",
+   "審查驗證申請書",
+   "文件審查",
+   "申請驗證",
+   "進行稽核",
+   "頒發證書"
+  ]
+ },
+ {
+  "id": 1010,
+  "layout": "rows",
+  "prompt": "",
+  "headers": [
+   "風險",
+   "過程"
+  ],
+  "rows": [
+   {
+    "label": "",
+    "text": "網路連線失敗",
+    "answer": "稽核活動"
+   },
+   {
+    "label": "",
+    "text": "稽核小組整體能力不足",
+    "answer": "選擇稽核小組的成員"
+   },
+   {
+    "label": "",
+    "text": "未能設定相關的稽核目標、範圍和準則",
+    "answer": "稽核規劃"
+   },
+   {
+    "label": "",
+    "text": "未能建立抽樣相關的規範",
+    "answer": "抽樣過程"
+   },
+   {
+    "label": "",
+    "text": "允許的稽核時間和資訊科技相關資源都不足",
+    "answer": "資源分配"
+   },
+   {
+    "label": "",
+    "text": "稽核員和受稽核方之間缺乏協調",
+    "answer": "溝通過程"
+   }
+  ],
+  "pool": [
+   "資源分配",
+   "稽核規劃",
+   "溝通過程",
+   "稽核活動",
+   "抽樣過程",
+   "選擇稽核小組的成員"
+  ]
+ },
+ {
+  "id": 1036,
+  "layout": "rows",
+  "prompt": "",
+  "headers": [
+   "控制措施",
+   "控制主題"
+  ],
+  "rows": [
+   {
+    "label": "",
+    "text": "應管理對外部網站的訪問，以減少惡意內容的暴露。",
+    "answer": "技術控制"
+   },
+   {
+    "label": "",
+    "text": "應根據組織的需要、定義和分配資訊安全角色和職責。",
+    "answer": "組織控制"
+   },
+   {
+    "label": "",
+    "text": "組織應提供一種機制，讓人員透過適當的管道，可及時報告觀察到或可疑的資訊安全事件。",
+    "answer": "人員控制"
+   },
+   {
+    "label": "",
+    "text": "應制定並適當執行紙張和移動硬碟的桌面淨空規則，以及資訊處理設施的螢幕淨空規則。",
+    "answer": "實體控制"
+   }
+  ],
+  "pool": [
+   "組織控制",
+   "人員控制",
+   "實體控制",
+   "技術控制"
+  ]
+ }
+]

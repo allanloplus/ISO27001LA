@@ -140,6 +140,15 @@ if __name__ == "__main__":
     if os.path.exists(extra):
         with open(extra, encoding="utf-8") as f:
             qs += [q for q in json.load(f) if not q.get("duplicateOf")]
+    # 合併拖拉作答（配對／填空／排序）資料
+    dnd = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dnd_questions.json")
+    if os.path.exists(dnd):
+        with open(dnd, encoding="utf-8") as f:
+            dmap = {d["id"]: d for d in json.load(f)}
+        for q in qs:
+            if q["id"] in dmap:
+                q["dnd"] = {k: v for k, v in dmap[q["id"]].items() if k != "id"}
+                q["stem"] = re.split(r"\n\n(?:待排序項目|描述)：", q["stem"])[0]
     # 合併 Allan Lo 顧問講解（AI 協助撰寫初稿，doubt 為答案疑義註記）
     allan = os.path.join(os.path.dirname(os.path.abspath(__file__)), "allan_explanations.json")
     if os.path.exists(allan):

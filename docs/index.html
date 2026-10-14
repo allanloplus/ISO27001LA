@@ -200,6 +200,28 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 .result-coaches { display: grid; gap: 14px; margin-top: 20px; }
 @media (max-width: 760px) { .hero-duo { grid-template-columns: minmax(0, 1fr); } .hero-duo .chars img { height: 130px; } }
 .answer-text { white-space: pre-line; color: var(--fg); }
+/* 拖拉作答 */
+.dnd-prompt { font-size: 14.5px; color: var(--muted); margin: -6px 0 14px; font-style: italic; }
+.dnd-rows { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(9em, 40%); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 14px; }
+.dnd-rows > div { padding: 8px 10px; border-top: 1px solid var(--line); display: flex; align-items: center; min-width: 0; overflow-wrap: anywhere; }
+.dnd-rows > .h { border-top: 0; background: var(--sunk); font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
+.dnd-rows .lbl { font-family: var(--f-mono); color: var(--muted); font-size: 13px; }
+.dnd-rows .fixed { grid-column: span 2; }
+.dnd-sentence { line-height: 2.6; font-size: 15.5px; margin-bottom: 14px; padding: 10px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; overflow-wrap: anywhere; }
+.slot { display: inline-flex; align-items: center; justify-content: center; min-width: 8em; min-height: 36px; padding: 4px 10px; border: 1.5px dashed var(--muted); border-radius: 8px; background: var(--surface); color: var(--muted); font-size: 14px; cursor: pointer; vertical-align: middle; text-align: center; line-height: 1.4; touch-action: none; user-select: none; }
+.dnd-rows .slot { width: 100%; }
+.slot.filled { border-style: solid; border-color: var(--ink); color: var(--fg); background: var(--surface); box-shadow: inset 0 0 0 1px var(--ink); }
+.slot.hover, .slot.target { border-color: var(--arale); background: var(--arale-soft); }
+.slot.ok { border: 1.5px solid var(--ok); background: var(--ok-soft); color: var(--ok); box-shadow: none; }
+.slot.bad { border: 1.5px solid var(--bad); background: var(--bad-soft); color: var(--bad); box-shadow: none; flex-direction: column; }
+.slot .fix { display: block; font-size: 12px; color: var(--ok); font-weight: 700; }
+.pool { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--sunk); min-height: 56px; }
+.pool .cap { width: 100%; font-size: 12px; color: var(--muted); }
+.chip { border: 1.5px solid var(--arale); background: var(--surface); color: var(--fg); border-radius: 8px; padding: 6px 12px; font-size: 14px; cursor: grab; touch-action: none; user-select: none; line-height: 1.4; }
+.chip.picked { background: var(--arale); color: var(--surface); }
+.chip:disabled { opacity: .35; cursor: default; }
+.drag-ghost { position: fixed; z-index: 60; pointer-events: none; transform: translate(-50%, -60%) rotate(-2deg); box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+@media (max-width: 760px) { .dnd-rows { grid-template-columns: auto minmax(0, 1fr); } .dnd-rows .cellslot { grid-column: 1 / -1; padding-top: 0; border-top: 0; } .dnd-rows .fixed { grid-column: 2; } .dnd-rows > .h:nth-child(3) { display: none; } }
 .expl { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
 .expl summary { cursor: pointer; font-weight: 500; color: var(--ink); }
 .expl .body { white-space: pre-line; font-size: 14px; color: var(--fg); margin-top: 8px; overflow-wrap: anywhere; line-height: 1.75; }
@@ -302,7 +324,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   /* ---------- 工具 ---------- */
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const typeLabel = q => q.type === "multi" ? `複選題・選 ${q.answer.length} 項` : q.type === "match" ? (q.answerText ? "排序／配對題・自評" : "配對題・看圖自評") : "單選題";
+  const typeLabel = q => q.type === "multi" ? `複選題・選 ${q.answer.length} 項` : q.type === "match" ? (q.dnd ? dndKind(q) + "・拖拉作答" : q.answerText ? "排序／配對題・自評" : "配對題・看圖自評") : "單選題";
   const fmtTime = s => { s = Math.max(0, s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
   const qLabel = q => `題庫 #${q.seq}`;
   /* ---------- 角色台詞 ---------- */
@@ -326,6 +348,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
       if (neg) return { img: "surprised", text: "注意！這題問的是「否定」的選項，別看反了。" };
       return null;
     }
+    if (q.dnd) return { img: "explain", text: q.dnd.layout === "sentence" ? "把下方選項拖到句子的空格裡（也可以先點選項、再點空格），選項比空格多，小心干擾項喔！" : dndKind(q) === "排序題" ? "想想實際作業的先後順序，把步驟一個一個拖到對的位置，全部放好再按「確認答案」。" : "把右邊的空格配上正確的選項，可以拖曳，也可以先點選項再點空格。" };
     if (q.type === "match") return { img: "thinking", text: "先在心裡或紙上完成配對，再按「顯示參考答案」對照，誠實自評才有效果喔！" };
     if (neg) return { img: "surprised", text: "注意！這題問的是「錯誤／不應該」的選項，作答前再讀一次題目。" };
     if (q.type === "multi") return { img: "explain", text: `這題要選 ${q.answer.length} 項，少選或多選都不給分，每個選項都要確認一次。` };
@@ -340,6 +363,87 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     if (!q.allan) return "";
     const img = q.allanDoubt ? "thinking" : ok === true ? "smile" : ok === false ? "point" : "thinking";
     return `<div class="coach allan"><img class="ava" src="img/chars/allan-${img}.jpg" alt="Allan Lo"><div><div class="who">Allan Lo 顧問講解 <small>· 考題檢討</small></div><div class="say">${esc(q.allan)}</div>${q.allanDoubt ? `<div class="doubt"><b>答案疑義註記：</b>${esc(q.allanDoubt)}</div>` : ""}</div></div>`;
+  }
+  /* ---------- 拖拉作答 ---------- */
+  const dndKind = q => q.dnd.layout === "sentence" ? "填空題" : q.dnd.rows.some(r => /^\d/.test(r.label)) ? "排序題" : "配對題";
+  const dndBlanks = q => q.dnd.layout === "sentence" ? q.dnd.segments.filter(x => typeof x === "object").map(x => x.blank) : q.dnd.rows.filter(r => r.answer !== null).map(r => r.answer);
+  function dndState(s, q) {
+    const n = dndBlanks(q).length;
+    if (!s.answers[q.id] || s.answers[q.id].length !== n) s.answers[q.id] = Array(n).fill(null);
+    return s.answers[q.id];
+  }
+  function dndHtml(q, s) {
+    const st = dndState(s, q), done = s.checked[q.id] !== undefined, ans = dndBlanks(q), d = q.dnd;
+    let b = -1;
+    const slot = () => {
+      b++;
+      const v = st[b], txt = v === null ? "" : d.pool[v];
+      if (done) {
+        const ok = txt === ans[b];
+        return `<span class="slot ${ok ? "ok" : "bad"}">${txt ? esc(txt) : "（未作答）"}${ok ? "" : `<span class="fix">正解：${esc(ans[b])}</span>`}</span>`;
+      }
+      return `<span class="slot ${v === null ? "" : "filled"} ${s.pick !== null && s.pick !== undefined && v === null ? "target" : ""}" data-slot="${b}" role="button" tabindex="0" aria-label="空格 ${b + 1}">${v === null ? "拖曳到這裡" : esc(txt)}</span>`;
+    };
+    let body;
+    if (d.layout === "sentence") body = `<div class="dnd-sentence">${d.segments.map(x => typeof x === "object" ? slot() : esc(x)).join("")}</div>`;
+    else body = `<div class="dnd-rows">${d.headers && d.headers.length ? `<div class="h"></div><div class="h">${esc(d.headers[0])}</div><div class="h">${esc(d.headers[1] || "")}</div>` : ""}${d.rows.map(r =>
+      r.answer === null
+        ? `<div class="lbl">${esc(r.label)}</div><div class="fixed">${esc(r.text)}</div>`
+        : `<div class="lbl">${esc(r.label)}</div><div>${esc(r.text)}</div><div class="cellslot">${slot()}</div>`).join("")}</div>`;
+    const used = new Set(st.filter(v => v !== null));
+    const pool = done ? "" : `<div class="pool" data-pool="1"><span class="cap">選項（拖曳到空格，或先點選項再點空格；點已填的空格可放回）</span>${d.pool.map((t, i) =>
+      `<button class="chip ${s.pick === i ? "picked" : ""}" data-chip="${i}" type="button" ${used.has(i) ? "disabled" : ""}>${esc(t)}</button>`).join("")}</div>`;
+    return (d.prompt ? `<p class="dnd-prompt">${esc(d.prompt)}</p>` : "") + body + pool;
+  }
+  function bindDnd(q, s) {
+    const st = dndState(s, q);
+    const place = (chip, slot) => {
+      const prev = st.indexOf(chip); if (prev >= 0) st[prev] = null;
+      st[slot] = chip; s.pick = null; renderQuiz();
+    };
+    const clear = slot => { st[slot] = null; s.pick = null; renderQuiz(); };
+    let drag = null;
+    const onMove = e => {
+      if (!drag) return;
+      if (!drag.moved && Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 6) return;
+      if (!drag.moved) { drag.moved = true; drag.ghost = drag.el.cloneNode(true); drag.ghost.classList.add("drag-ghost", "chip"); drag.ghost.classList.remove("slot"); document.body.appendChild(drag.ghost); }
+      drag.ghost.style.left = e.clientX + "px"; drag.ghost.style.top = e.clientY + "px";
+      app.querySelectorAll(".slot.hover").forEach(x => x.classList.remove("hover"));
+      const t = document.elementFromPoint(e.clientX, e.clientY);
+      const sl = t && t.closest("[data-slot]"); if (sl) sl.classList.add("hover");
+    };
+    const onUp = e => {
+      document.removeEventListener("pointermove", onMove); document.removeEventListener("pointerup", onUp);
+      const d0 = drag; drag = null; if (!d0) return;
+      if (d0.ghost) d0.ghost.remove();
+      if (!d0.moved) { d0.tap(); return; }
+      const t = document.elementFromPoint(e.clientX, e.clientY);
+      const sl = t && t.closest("[data-slot]"), pl = t && t.closest("[data-pool]");
+      if (sl) {
+        const to = +sl.dataset.slot;
+        if (d0.fromSlot !== undefined) { const other = st[to]; st[to] = d0.chip; st[d0.fromSlot] = to === d0.fromSlot ? d0.chip : other; s.pick = null; renderQuiz(); }
+        else place(d0.chip, to);
+      } else if (pl && d0.fromSlot !== undefined) clear(d0.fromSlot);
+      else renderQuiz();
+    };
+    const start = (e, info) => {
+      if (e.button !== undefined && e.button !== 0) return;
+      e.preventDefault();
+      drag = Object.assign({ x: e.clientX, y: e.clientY, moved: false, el: e.currentTarget }, info);
+      document.addEventListener("pointermove", onMove); document.addEventListener("pointerup", onUp);
+    };
+    app.querySelectorAll("[data-chip]:not(:disabled)").forEach(el => {
+      const chip = +el.dataset.chip;
+      el.onpointerdown = e => start(e, { chip, tap: () => { s.pick = s.pick === chip ? null : chip; renderQuiz(); } });
+      el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); s.pick = s.pick === chip ? null : chip; renderQuiz(); } };
+    });
+    app.querySelectorAll("[data-slot]").forEach(el => {
+      const slot = +el.dataset.slot;
+      const tap = () => { if (s.pick !== null && s.pick !== undefined) place(s.pick, slot); else if (st[slot] !== null) clear(slot); };
+      el.onpointerdown = e => st[slot] !== null ? start(e, { chip: st[slot], fromSlot: slot, tap }) : (e.preventDefault(), tap());
+      el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); tap(); } };
+    });
+    const r = app.querySelector("#dndReset"); if (r) r.onclick = () => { st.fill(null); s.pick = null; renderQuiz(); };
   }
   const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
 
@@ -399,7 +503,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <div>
           <div class="eyebrow">ISO/IEC 27001 · ISMS 稽核 · 中文題庫</div>
           <h1>ISMS Auditor知識測驗</h1>
-          <p class="lede">共 ${QS.length} 題：單選 ${cnt("single")}、複選 ${cnt("multi")}、配對／排序 ${cnt("match")}（看參考答案後自評）。每題答完由 Allan Lo 顧問講解，阿拉蕾助教一路陪你練習。作答紀錄只存在這個瀏覽器。</p>
+          <p class="lede">共 ${QS.length} 題：單選 ${cnt("single")}、複選 ${cnt("multi")}、配對／填空／排序 ${cnt("match")}（拖拉作答）。每題答完由 Allan Lo 顧問講解，阿拉蕾助教一路陪你練習。作答紀錄只存在這個瀏覽器。</p>
           ${araleSay(homeGreeting(answered, acc, tot, wrong))}
         </div>
         <div class="chars" aria-hidden="true"><img src="img/chars/arale-present.jpg" alt=""><img src="img/chars/allan-full.jpg" alt=""></div>
@@ -418,7 +522,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <button class="mode" data-mode="unseen" type="button" ${answered >= QS.length ? "disabled" : ""}><h3>未練習題目 <em>${QS.length - answered}</em></h3><p>只出還沒作答過的題目。</p></button>
         <button class="mode" data-mode="wrong" type="button" ${wrong ? "" : "disabled"}><h3>錯題複習 <em>${wrong}</em></h3><p>最近一次答錯的題目；答對後自動移出錯題本。</p></button>
         <button class="mode" data-mode="flag" type="button" ${flags.size ? "" : "disabled"}><h3>標記題目 <em>${flags.size}</em></h3><p>作答時按「標記」收藏的題目。</p></button>
-        <button class="mode" data-mode="match" type="button"><h3>配對／排序題專練 <em>${cnt("match")}</em></h3><p>只出配對、填空與排序題。先自己作答，再看參考答案自評。</p></button>
+        <button class="mode" data-mode="match" type="button"><h3>配對／排序題專練 <em>${cnt("match")}</em></h3><p>只出配對、填空與排序題，直接拖拉選項作答，系統自動批改。</p></button>
         <button class="mode" data-mode="doubt" type="button"><h3>答案疑義題 <em>${QS.filter(q => q.allanDoubt).length}</em></h3><p>顧問講解中註記「題庫答案可能有誤」的題目，適合考前釐清觀念。</p></button>
         <button class="mode" data-mode="scenario" type="button"><h3>情境題專練 <em>${QS.filter(q => q.stem.length >= 360).length}</em></h3><p>長篇情境（Scenario）題，練習閱讀判斷。</p></button>
       </div>
@@ -570,7 +674,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     const { context, ask: askText } = splitStem(q.stem);
     const doneCount = isExam ? s.ids.filter(x => (s.answers[x] || []).length).length : Object.keys(s.checked).length;
 
-    const optsHtml = q.type === "match" ? "" : `<div class="opts" role="${q.type === "multi" ? "group" : "radiogroup"}">` + s.order[id].map(k => {
+    const optsHtml = q.dnd && !isExam ? dndHtml(q, s) : q.type === "match" ? "" : `<div class="opts" role="${q.type === "multi" ? "group" : "radiogroup"}">` + s.order[id].map(k => {
       const o = q.options.find(o => o.key === k);
       const isSel = sel.includes(k), isAns = q.answer.includes(k);
       let cls = "opt" + (q.type === "multi" ? " multi" : "");
@@ -586,7 +690,13 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
       verdict = `<div class="verdict ${ok ? "ok" : "bad"}"><b>${ok ? "答對了" : sel.length ? "答錯了" : "未作答"}</b><span>正確答案：${q.answer.join("、")}${sel.length ? `　你的答案：${sel.slice().sort().join("、")}` : ""}</span></div>`;
     }
     let matchBlock = "";
-    if (q.type === "match" && !isExam) {
+    if (q.dnd && !isExam) {
+      if (checked) {
+        const st = dndState(s, q), ans = dndBlanks(q), right = ans.filter((a, i) => st[i] !== null && q.dnd.pool[st[i]] === a).length;
+        matchBlock = `<div class="verdict ${s.checked[id] ? "ok" : "bad"}"><b>${s.checked[id] ? "全部正確！" : "還有空格不正確"}</b><span>${right} / ${ans.length} 格正確${s.checked[id] ? "" : "，紅色空格下方為正解。"}</span></div>`
+          + (q.images.length ? `<details class="expl"><summary>原題圖片</summary><div class="figs" style="margin-top:8px">${q.images.concat(q.answerImages).map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 原題圖片" loading="lazy">`).join("")}</div></details>` : "");
+      }
+    } else if (q.type === "match" && !isExam) {
       matchBlock = checked || s.revealMatch === id
         ? `<div class="verdict neutral"><b>參考答案</b>${q.answerText ? `<span class="answer-text">${esc(q.answerText)}</span>` : `<span>請比對你的配對結果，再選擇自評。</span>`}</div>${q.answerText ? "" : `<div class="figs" style="margin-top:12px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 參考答案" loading="lazy">`).join("")}</div>`}
            ${checked ? `<div class="verdict ${s.checked[id] ? "ok" : "bad"}"><b>自評：${s.checked[id] ? "答對" : "答錯"}</b></div>` : `<div class="actions"><button class="btn" data-self="1" type="button">我答對了</button><button class="btn danger" data-self="0" type="button">我答錯了</button></div>`}`
@@ -604,6 +714,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     const last = s.idx === s.ids.length - 1;
     const primary = isExam
       ? (last ? `<button class="btn" id="submitExam" type="button">交卷</button>` : `<button class="btn" id="next" type="button">下一題</button>`)
+      : q.dnd && !checked ? `<button class="btn" id="check" type="button" ${dndState(s, q).some(v => v !== null) ? "" : "disabled"}>確認答案</button><button class="btn ghost" id="dndReset" type="button">重新作答</button>`
       : q.type === "match" ? `<button class="btn" id="next" type="button" ${last ? "disabled" : ""}>下一題</button>`
       : checked || s.finished ? `<button class="btn" id="next" type="button" ${last ? "disabled" : ""}>下一題</button>`
       : `<button class="btn" id="check" type="button" ${sel.length ? "" : "disabled"}>確認答案</button>`;
@@ -629,7 +740,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <article class="card">
             ${context ? `<div class="stem long">${esc(context)}</div>` : ""}
             <p class="${context ? "ask" : "stem"}">${esc(askText)}</p>
-            ${q.images.length ? `<div class="figs">${q.images.map(src => `<img src="img/${esc(src)}" alt="第 ${id} 題圖片" loading="lazy">`).join("")}</div>` : ""}
+            ${q.images.length && !q.dnd ? `<div class="figs">${q.images.map(src => `<img src="img/${esc(src)}" alt="第 ${id} 題圖片" loading="lazy">`).join("")}</div>` : ""}
             ${optsHtml}
             ${verdict}
             ${matchBlock}
@@ -658,6 +769,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     on("#backResult", renderResult);
     on("#drawer", () => app.querySelector("#index").classList.toggle("collapsed"));
     on("#revealMatch", () => { s.revealMatch = id; renderQuiz(); });
+    if (q.dnd && !isExam && !checked) bindDnd(q, s);
     app.querySelectorAll("[data-self]").forEach(b => b.onclick = () => {
       const ok = b.dataset.self === "1"; s.checked[id] = ok; record(id, ok); react(ok); renderQuiz();
     });
@@ -687,6 +799,12 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   }
   function check() {
     const s = session, id = s.ids[s.idx], q = BY_ID.get(id);
+    if (q.dnd) {
+      const st = dndState(s, q);
+      if (!st.some(v => v !== null) || s.checked[id] !== undefined) return;
+      const ok = dndBlanks(q).every((a, i) => st[i] !== null && q.dnd.pool[st[i]] === a);
+      s.checked[id] = ok; s.pick = null; record(id, ok); react(ok); renderQuiz(); return;
+    }
     const sel = s.answers[id] || [];
     if (!sel.length || s.checked[id] !== undefined) return;
     const ok = sameSet(sel, q.answer);
