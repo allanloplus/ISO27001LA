@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""將題庫 PDF 解析為 questions.json 與圖片檔，供測驗網站使用。
+"""將題庫 PDF 解析為 questions.json 與圖片檔，並合併 tools/irca_questions.json，供測驗網站使用。
 
 用法: python3 tools/parse_pdf.py "ISO-IEC-27001-Lead-Auditor-CN V15.35.pdf" docs
 需要: pip install pymupdf
@@ -133,6 +133,13 @@ def parse(pdf, out_dir):
 if __name__ == "__main__":
     pdf, out = sys.argv[1], sys.argv[2]
     qs = parse(pdf, out)
+    for q in qs:
+        q["source"] = "V15.35"
+    # 合併 IRCA 模擬試題（人工轉錄，排除與 V15.35 重複者）
+    extra = os.path.join(os.path.dirname(os.path.abspath(__file__)), "irca_questions.json")
+    if os.path.exists(extra):
+        with open(extra, encoding="utf-8") as f:
+            qs += [q for q in json.load(f) if not q.get("duplicateOf")]
     with open(os.path.join(out, "questions.json"), "w", encoding="utf-8") as f:
         json.dump(qs, f, ensure_ascii=False, indent=1)
     # questions.js 讓網站以 file:// 直接開啟時也能載入題庫

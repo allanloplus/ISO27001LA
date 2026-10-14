@@ -224,7 +224,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 <body>
 <header class="top">
   <div class="wrap">
-    <button class="brand" id="homeBtn" type="button"><b>ISO/IEC 27001 LA</b><span>題庫 V15.35 · 368 題</span></button>
+    <button class="brand" id="homeBtn" type="button"><b>ISO/IEC 27001 LA</b><span id="brandSub">V15.35 + IRCA 模擬試題</span></button>
     <nav>
       <button class="chip-btn" id="themeBtn" type="button">深色／淺色</button>
     </nav>
@@ -279,6 +279,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const typeLabel = q => q.type === "multi" ? `複選題・選 ${q.answer.length} 項` : q.type === "match" ? "配對題・看圖自評" : "單選題";
   const fmtTime = s => { s = Math.max(0, s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
+  const qLabel = q => q.source === "IRCA" ? `IRCA #${q.no}` : `V15 #${q.id}`;
   const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
 
   // 情境題：把長篇情境與最後的提問分開顯示
@@ -323,12 +324,13 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     const acc = tot ? Math.round(ok / tot * 100) : 0;
     const wrong = wrongIds().length;
     const cnt = t => QS.filter(q => q.type === t).length;
+    const srcCnt = src => QS.filter(q => q.source === src).length;
     const set = S.settings;
     app.innerHTML = `
       <section class="hero">
-        <div class="eyebrow">PECB Certified ISO/IEC 27001 Lead Auditor · 中文題庫</div>
+        <div class="eyebrow">ISO/IEC 27001 Lead Auditor · 中文題庫</div>
         <h1>主導稽核員考前練習</h1>
-        <p class="lede">共 ${QS.length} 題：單選 ${cnt("single")}、複選 ${cnt("multi")}、拖曳配對 ${cnt("match")}（配對題以原始圖片呈現，看答案後自評）。作答紀錄只存在這個瀏覽器。</p>
+        <p class="lede">共 ${QS.length} 題（V15.35 題庫 ${srcCnt("V15.35")} 題、IRCA 模擬試題 ${srcCnt("IRCA")} 題）：單選 ${cnt("single")}、複選 ${cnt("multi")}、拖曳配對 ${cnt("match")}（配對題以原始圖片呈現，看答案後自評）。作答紀錄只存在這個瀏覽器。</p>
       </section>
       <div class="stats">
         <div class="stat"><div class="k">已練習題數</div><div class="v">${answered}<small> / ${QS.length}</small></div><div class="meter"><i style="width:${answered / QS.length * 100}%"></i></div></div>
@@ -354,7 +356,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <div class="field">時間（分鐘）<input id="exT" type="number" min="5" max="300" value="${set.exT || 180}"></div>
           <div class="field">及格分數（%）<input id="exP" type="number" min="1" max="100" value="${set.exP || 70}"></div>
         </div>
-        <p class="note">隨機抽取單選與複選題（配對題需自評，不列入模擬考）。考試中不顯示答案，交卷後一次評分；複選題須全部選對才給分。預設 80 題、180 分鐘、70% 及格，可依需要調整。</p>
+        <p class="note">依「查題」區的題型與來源勾選，隨機抽取單選與複選題（配對題需自評，不列入模擬考）。考試中不顯示答案，交卷後一次評分；複選題須全部選對才給分。預設 80 題、180 分鐘、70% 及格，可依需要調整。</p>
         <div><button class="btn" id="startExam" type="button">開始模擬考</button></div>
       </div>
 
@@ -368,9 +370,13 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
           <label><input type="checkbox" id="tSingle" checked> 單選</label>
           <label><input type="checkbox" id="tMulti" checked> 複選</label>
           <label><input type="checkbox" id="tMatch" checked> 配對</label>
+        </div>
+        <div class="row">
+          <label><input type="checkbox" id="sV15" checked> V15.35 題庫</label>
+          <label><input type="checkbox" id="sIRCA" checked> IRCA 模擬試題</label>
           <label><input type="checkbox" id="optShuffle" ${set.shuffleOpts ? "checked" : ""}> 練習時打亂選項順序</label>
         </div>
-        <p class="note" id="kwNote">題型勾選會套用到上方所有練習模式。</p>
+        <p class="note" id="kwNote">題型與來源勾選會套用到上方所有練習模式。</p>
       </div>
 
       <h2>資料管理</h2>
@@ -378,7 +384,8 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     `;
     const typeFilter = () => {
       const allow = { single: tSingle.checked, multi: tMulti.checked, match: tMatch.checked };
-      return q => allow[q.type];
+      const srcOk = { "V15.35": app.querySelector("#sV15").checked, "IRCA": app.querySelector("#sIRCA").checked };
+      return q => allow[q.type] && srcOk[q.source];
     };
     const tSingle = app.querySelector("#tSingle"), tMulti = app.querySelector("#tMulti"), tMatch = app.querySelector("#tMatch");
     app.querySelector("#optShuffle").onchange = e => { S.settings.shuffleOpts = e.target.checked; store.save(); };
@@ -412,7 +419,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     app.querySelector("#kwBtn").onclick = doSearch;
     app.querySelector("#kw").onkeydown = e => { if (e.key === "Enter") doSearch(); };
     app.querySelector("#startExam").onclick = () => {
-      const pool = QS.filter(q => q.type !== "match");
+      const f = typeFilter();
+      const pool = QS.filter(q => q.type !== "match" && f(q));
+      if (pool.length < 5) { app.querySelector("#kwNote").textContent = "目前的題型與來源篩選下題目不足，請調整勾選。"; return; }
       const n = Math.min(pool.length, Math.max(5, +app.querySelector("#exN").value || 80));
       const t = Math.min(300, Math.max(5, +app.querySelector("#exT").value || 180));
       const p = Math.min(100, Math.max(1, +app.querySelector("#exP").value || 70));
@@ -514,14 +523,14 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <aside class="index ${innerWidth <= 760 ? "collapsed" : ""}" id="index">
           <h4><span>${esc(s.title)}</span><span>${doneCount}/${s.ids.length}</span></h4>
           <button class="chip-btn drawer-toggle" id="drawer" type="button">題號清單</button>
-          <div class="grid">${s.ids.map((x, i) => `<button class="${cellClass(x, i)}" data-i="${i}" type="button" title="第 ${x} 題">${x}</button>`).join("")}</div>
+          <div class="grid">${s.ids.map((x, i) => `<button class="${cellClass(x, i)}" data-i="${i}" type="button" title="${esc(qLabel(BY_ID.get(x)))}">${BY_ID.get(x).source === "IRCA" ? "I" + BY_ID.get(x).no : x}</button>`).join("")}</div>
           <div class="legend">${isExam ? `<span><i style="background:var(--sunk)"></i>已作答</span>` : `<span><i style="background:var(--ok-soft);border-color:var(--ok)"></i>答對</span><span><i style="background:var(--bad-soft);border-color:var(--bad)"></i>答錯</span>`}<span><i style="background:var(--warn);border-color:var(--warn);border-radius:50%"></i>標記</span></div>
           ${isExam ? `<div style="margin-top:12px"><button class="btn" id="submitExam2" type="button" style="width:100%">交卷</button></div>` : s.finished ? `<div style="margin-top:12px"><button class="btn ghost" id="backResult" type="button" style="width:100%">回到成績</button></div>` : ""}
         </aside>
         <section style="min-width:0">
           <div class="qbar">
             <span class="qno">第 ${s.idx + 1} / ${s.ids.length} 題</span>
-            <span class="pill">題庫 #${id}</span>
+            <span class="pill">${esc(qLabel(q))}</span>
             <span class="pill ${q.type}">${typeLabel(q)}</span>
             ${s.mode === "exam" && !s.finished ? `<span class="timer" id="timer">剩餘 ${fmtTime(Math.round((s.deadline - Date.now()) / 1000))}</span>` : ""}
           </div>
@@ -622,7 +631,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <h2>作答明細</h2>
         <div class="review">${s.ids.map((id, i) => {
           const q = BY_ID.get(id), a = (s.answers[id] || []).slice().sort();
-          return `<button data-i="${i}" type="button"><span class="s" style="color:var(--${s.checked[id] ? "ok" : "bad"})">${s.checked[id] ? "✓" : "✗"} #${id}</span><span class="t">${esc(q.stem.replace(/\n/g, " ").slice(-80))}</span><span class="s">${a.join(",") || "—"} → ${q.answer.join(",")}</span></button>`;
+          return `<button data-i="${i}" type="button"><span class="s" style="color:var(--${s.checked[id] ? "ok" : "bad"})">${s.checked[id] ? "✓" : "✗"} ${esc(qLabel(q))}</span><span class="t">${esc(q.stem.replace(/\n/g, " ").slice(-80))}</span><span class="s">${a.join(",") || "—"} → ${q.answer.join(",")}</span></button>`;
         }).join("")}</div>
       </div>`;
     app.querySelector("#toHome").onclick = () => { session = null; renderHome(); };
