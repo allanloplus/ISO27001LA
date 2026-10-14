@@ -23,6 +23,7 @@
   --ok: #1d7a3e;   --ok-soft: #dcf1e2;
   --bad: #b3261e;  --bad-soft: #f8dedb;
   --warn: #9a6200; --warn-soft: #f7ecd2;
+  --arale: #0b7f8c; --arale-soft: #dff2f3;   /* 阿拉蕾外套的青綠色 */
   --f-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --f-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -33,14 +34,14 @@
     --bg: #0f1719; --surface: #162125; --sunk: #1d2b30; --fg: #e3ebe9; --muted: #93a6a9;
     --line: #2a3b40; --accent: #4fc2a8; --accent-soft: #173a34; --ink: #9db8e6;
     --ok: #5fd08a; --ok-soft: #173525; --bad: #ff8a80; --bad-soft: #3d1d1b;
-    --warn: #f0b850; --warn-soft: #3a2d12; color-scheme: dark;
+    --warn: #f0b850; --warn-soft: #3a2d12; --arale: #5fd3dd; --arale-soft: #153338; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1719; --surface: #162125; --sunk: #1d2b30; --fg: #e3ebe9; --muted: #93a6a9;
   --line: #2a3b40; --accent: #4fc2a8; --accent-soft: #173a34; --ink: #9db8e6;
   --ok: #5fd08a; --ok-soft: #173525; --bad: #ff8a80; --bad-soft: #3d1d1b;
-  --warn: #f0b850; --warn-soft: #3a2d12; color-scheme: dark;
+  --warn: #f0b850; --warn-soft: #3a2d12; --arale: #5fd3dd; --arale-soft: #153338; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
@@ -178,6 +179,26 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 .verdict.bad { background: var(--bad-soft); color: var(--bad); }
 .verdict.neutral { background: var(--sunk); color: var(--fg); }
 .verdict b { font-size: 16px; }
+/* 角色：阿拉蕾助教、Allan Lo 顧問 */
+.coach { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: start; }
+.coach .ava { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top; background: #fff; border: 2px solid var(--arale); }
+.coach .who { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--arale); margin-bottom: 2px; }
+.coach .say { position: relative; background: var(--arale-soft); border-radius: 4px 14px 14px 14px; padding: 10px 14px; line-height: 1.7; white-space: pre-line; overflow-wrap: anywhere; }
+.coach.arale { margin-bottom: 14px; }
+.coach.allan { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.coach.allan .ava { border-color: var(--ink); width: 72px; height: 72px; }
+.coach.allan { grid-template-columns: 72px minmax(0, 1fr); }
+.coach.allan .who { color: var(--ink); }
+.coach.allan .who small { font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.coach.allan .say { background: var(--sunk); border-radius: 4px 14px 14px 14px; font-size: 14.5px; }
+.doubt { margin-top: 8px; border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 8px 12px; border-radius: 0 8px 8px 0; font-size: 13.5px; white-space: pre-line; }
+.doubt b { color: var(--warn); }
+.hero-duo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: end; }
+.hero-duo .chars { display: flex; align-items: flex-end; gap: 4px; }
+.hero-duo .chars img { height: 190px; width: auto; border-radius: 12px; }
+.coach.hero-say { margin-top: 10px; max-width: 640px; }
+.result-coaches { display: grid; gap: 14px; margin-top: 20px; }
+@media (max-width: 760px) { .hero-duo { grid-template-columns: minmax(0, 1fr); } .hero-duo .chars img { height: 130px; } }
 .answer-text { white-space: pre-line; color: var(--fg); }
 .expl { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
 .expl summary { cursor: pointer; font-weight: 500; color: var(--ink); }
@@ -281,6 +302,42 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   const typeLabel = q => q.type === "multi" ? `複選題・選 ${q.answer.length} 項` : q.type === "match" ? "配對題・看圖自評" : "單選題";
   const fmtTime = s => { s = Math.max(0, s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
   const qLabel = q => q.source === "IRCA" ? `IRCA #${q.no}` : `V15 #${q.id}`;
+  /* ---------- 角色台詞 ---------- */
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const fill = (t, v) => t.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? "");
+  const ARALE_TIPS = [
+    "先用刪去法排除明顯不對的選項，剩下的再慢慢比較。",
+    "看到「始終」「必須」「僅」「一定」這類絕對字眼要特別小心喔！",
+    "想想 ISO 19011 的七大稽核原則：誠正、公正呈現、專業上應有的注意、保密、獨立性、基於證據的方法、基於風險的方法。",
+    "分清楚是「第一方、第二方還是第三方」稽核，答案常常就藏在這裡。",
+    "條文題先想是 ISO/IEC 27001 第 4～10 條的要求，還是附錄 A 的控制措施。",
+    "穩穩來，不用急，每一題都是在累積實力！",
+  ];
+  const ARALE_OK = ["答對了！好厲害～", "完全正確！這個觀念你已經掌握了。", "就是這個！繼續保持。", "漂亮！下一題也交給你了。", "正確！要不要順便看看 Allan 顧問怎麼解析其他選項？"];
+  const ARALE_BAD = ["沒關係，錯了才記得住！看看 Allan 顧問的講解。", "差一點點！這題已經幫你收進錯題本了。", "這題陷阱有點深，跟著顧問的講解再理解一次吧。", "別灰心，正式考試前錯越多次，考試時就越穩！"];
+  function araleTip(q, s) {
+    const neg = /錯誤|不正確|不應|不需要|不是|不符合|不適合|缺點|不屬於|不能/.test(splitStem(q.stem).ask);
+    if (s.mode === "exam") {
+      if (s.idx === s.ids.length - 1) return { img: "explain", text: "這是最後一題了！交卷前看看左邊題號，沒有變灰的就是還沒作答的題目。" };
+      if (q.type === "multi") return { img: "explain", text: `這題要選 ${q.answer.length} 項，全部選對才給分喔。` };
+      if (neg) return { img: "surprised", text: "注意！這題問的是「否定」的選項，別看反了。" };
+      return null;
+    }
+    if (q.type === "match") return { img: "thinking", text: "先在心裡或紙上完成配對，再按「顯示參考答案」對照，誠實自評才有效果喔！" };
+    if (neg) return { img: "surprised", text: "注意！這題問的是「錯誤／不應該」的選項，作答前再讀一次題目。" };
+    if (q.type === "multi") return { img: "explain", text: `這題要選 ${q.answer.length} 項，少選或多選都不給分，每個選項都要確認一次。` };
+    if (splitStem(q.stem).context) return { img: "thinking", text: "情境題的技巧：先看最後的提問，再回到情境裡找關鍵事實。" };
+    return { img: "happy", text: pick(ARALE_TIPS) };
+  }
+  function araleSay(r, name = "阿拉蕾助教") {
+    if (!r) return "";
+    return `<div class="coach arale" id="araleBox"><img class="ava" src="img/chars/arale-${r.img}.jpg" alt="阿拉蕾" id="araleImg"><div><div class="who">${name}</div><div class="say" id="araleSay">${esc(r.text)}</div></div></div>`;
+  }
+  function allanSay(q, ok) {
+    if (!q.allan) return "";
+    const img = q.allanDoubt ? "thinking" : ok === true ? "smile" : ok === false ? "point" : "thinking";
+    return `<div class="coach allan"><img class="ava" src="img/chars/allan-${img}.jpg" alt="Allan Lo"><div><div class="who">Allan Lo 顧問講解 <small>· 考題檢討</small></div><div class="say">${esc(q.allan)}</div>${q.allanDoubt ? `<div class="doubt"><b>答案疑義註記：</b>${esc(q.allanDoubt)}</div>` : ""}</div></div>`;
+  }
   const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
 
   // 情境題：把長篇情境與最後的提問分開顯示
@@ -318,6 +375,13 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     else { stopTimer(); session = null; fn(); }
   }
 
+  function homeGreeting(answered, acc, tot, wrong) {
+    if (!answered) return { img: "cheer", text: `嗨！我是阿拉蕾，你的 AI 小助教。題庫共有 ${QS.length} 題，我們先從「依序練習」暖身吧！每題答完，Allan 顧問都會幫你講解喔。` };
+    if (wrong >= 10) return { img: "explain", text: `歡迎回來！你已經練了 ${answered} 題，正確率 ${acc}%。錯題本裡還有 ${wrong} 題，先把它們清掉最有效率喔！` };
+    if (answered >= 150 && acc >= 70) return { img: "wink", text: `已練 ${answered} 題、正確率 ${acc}%，狀態很好！要不要來一場 80 題模擬考試試身手？` };
+    return { img: "happy", text: `歡迎回來！已練 ${answered} 題、正確率 ${tot ? acc : 0}%。今天也一起往前推進吧！` };
+  }
+
   function renderHome() {
     const answered = QS.filter(q => S.stats[q.id]).length;
     let ok = 0, tot = 0;
@@ -328,10 +392,14 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     const srcCnt = src => QS.filter(q => q.source === src).length;
     const set = S.settings;
     app.innerHTML = `
-      <section class="hero">
-        <div class="eyebrow">ISO/IEC 27001 Lead Auditor · 中文題庫</div>
-        <h1>主導稽核員考前練習</h1>
-        <p class="lede">共 ${QS.length} 題（V15.35 題庫 ${srcCnt("V15.35")} 題、IRCA 模擬試題 ${srcCnt("IRCA")} 題）：單選 ${cnt("single")}、複選 ${cnt("multi")}、拖曳配對 ${cnt("match")}（配對題以原始圖片呈現，看答案後自評）。作答紀錄只存在這個瀏覽器。</p>
+      <section class="hero hero-duo">
+        <div>
+          <div class="eyebrow">ISO/IEC 27001 Lead Auditor · 中文題庫</div>
+          <h1>主導稽核員考前練習</h1>
+          <p class="lede">共 ${QS.length} 題（V15.35 題庫 ${srcCnt("V15.35")} 題、IRCA 模擬試題 ${srcCnt("IRCA")} 題）：單選 ${cnt("single")}、複選 ${cnt("multi")}、配對／排序 ${cnt("match")}（看參考答案後自評）。每題答完由 Allan Lo 顧問講解，阿拉蕾助教一路陪你練習。作答紀錄只存在這個瀏覽器。</p>
+          ${araleSay(homeGreeting(answered, acc, tot, wrong))}
+        </div>
+        <div class="chars" aria-hidden="true"><img src="img/chars/arale-present.jpg" alt=""><img src="img/chars/allan-full.jpg" alt=""></div>
       </section>
       <div class="stats">
         <div class="stat"><div class="k">已練習題數</div><div class="v">${answered}<small> / ${QS.length}</small></div><div class="meter"><i style="width:${answered / QS.length * 100}%"></i></div></div>
@@ -439,7 +507,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   function newSession(mode, ids, title) {
     const shuffleOpts = mode !== "exam" && !!S.settings.shuffleOpts;
     return {
-      mode, ids, title, idx: 0, answers: {}, checked: {}, finished: false,
+      mode, ids, title, idx: 0, answers: {}, checked: {}, finished: false, react: {}, streak: 0,
       order: Object.fromEntries(ids.map(id => {
         const q = BY_ID.get(id);
         const keys = q.options.map(o => o.key);
@@ -458,12 +526,22 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     session = newSession("exam", ids, "模擬考試");
     session.deadline = Date.now() + minutes * 60000; session.passPct = passPct; session.minutes = minutes;
     session.startedAt = Date.now();
+    session.react[ids[0]] = { img: "cheer", text: `模擬考開始！${ids.length} 題、${minutes} 分鐘，平均每題約 ${Math.max(1, Math.round(minutes * 60 / ids.length))} 秒。不確定的題目先按「標記」，最後再回來檢查。加油！` };
     renderQuiz();
     stopTimer();
     timerId = setInterval(() => {
       const el = document.getElementById("timer");
       const left = Math.round((session.deadline - Date.now()) / 1000);
       if (el) { el.textContent = "剩餘 " + fmtTime(left); el.classList.toggle("low", left < 600); }
+      const warn = left <= 600 ? 10 : left <= 1800 && session.minutes > 30 ? 30 : 0;
+      if (warn && session.warned !== warn) {
+        session.warned = warn;
+        session.ids.forEach(x => { session.react[x] = warn === 10
+          ? { img: "surprised", text: "最後 10 分鐘！先把還沒作答的題目填完，猜也要猜，空白一定不給分。" }
+          : { img: "explain", text: "還剩 30 分鐘，注意時間分配。標記過的題目可以開始回頭檢查了。" }; });
+        const say = document.getElementById("araleSay"), img = document.getElementById("araleImg");
+        if (say) { say.textContent = session.react[session.ids[session.idx]].text; img.src = `img/chars/arale-${warn === 10 ? "surprised" : "explain"}.jpg`; }
+      }
       if (left <= 0) { stopTimer(); finishExam(true); }
     }, 1000);
   }
@@ -509,8 +587,13 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
            ${checked ? `<div class="verdict ${s.checked[id] ? "ok" : "bad"}"><b>自評：${s.checked[id] ? "答對" : "答錯"}</b></div>` : `<div class="actions"><button class="btn" data-self="1" type="button">我答對了</button><button class="btn danger" data-self="0" type="button">我答錯了</button></div>`}`
         : `<div class="actions" style="margin-top:0"><button class="btn ghost" id="revealMatch" type="button">顯示參考答案</button><span class="note">先在紙上或心中完成配對，再看答案。</span></div>`;
     }
-    const expl = reveal || (q.type === "match" && (checked || s.revealMatch === id))
-      ? `<details class="expl" ${S.settings.openExpl ? "open" : ""}><summary>${q.source === "IRCA" ? "說明" : "解析" + (q.explanation ? "（原文）" : "")}</summary><div class="body">${q.explanation ? esc(q.explanation) : "本題題庫未附解析。"}</div></details>`
+    const shown = reveal || (q.type === "match" && (checked || s.revealMatch === id));
+    const myOk = q.type === "match" ? s.checked[id] : (reveal ? sameSet(sel, q.answer) : undefined);
+    const arale = s.react[id] || (s.finished
+      ? (s.checked[id] ? { img: "happy", text: "這題你答對了！再看一下 Allan 顧問整理的重點，觀念會更扎實。" } : { img: "explain", text: "這題沒答對，仔細看看 Allan 顧問的講解，弄懂每個選項錯在哪裡。" })
+      : araleTip(q, s));
+    const expl = shown
+      ? allanSay(q, myOk) + `<details class="expl" ${S.settings.openExpl ? "open" : ""}><summary>${q.source === "IRCA" ? "題目來源說明" : "題庫原文解析（英文）"}</summary><div class="body">${q.explanation ? esc(q.explanation) : "本題題庫未附解析。"}</div></details>`
         + (q.type !== "match" && q.answerImages.length ? `<details class="expl"><summary>原始題目截圖</summary><div class="figs" style="margin-top:8px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 原始截圖" loading="lazy">`).join("")}</div></details>` : "") : "";
 
     const last = s.idx === s.ids.length - 1;
@@ -537,6 +620,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
             ${s.mode === "exam" && !s.finished ? `<span class="timer" id="timer">剩餘 ${fmtTime(Math.round((s.deadline - Date.now()) / 1000))}</span>` : ""}
           </div>
           <div class="progress"><i style="width:${(s.idx + 1) / s.ids.length * 100}%"></i></div>
+          ${araleSay(arale)}
           <article class="card">
             ${context ? `<div class="stem long">${esc(context)}</div>` : ""}
             <p class="${context ? "ask" : "stem"}">${esc(askText)}</p>
@@ -570,7 +654,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     on("#drawer", () => app.querySelector("#index").classList.toggle("collapsed"));
     on("#revealMatch", () => { s.revealMatch = id; renderQuiz(); });
     app.querySelectorAll("[data-self]").forEach(b => b.onclick = () => {
-      const ok = b.dataset.self === "1"; s.checked[id] = ok; record(id, ok); renderQuiz();
+      const ok = b.dataset.self === "1"; s.checked[id] = ok; record(id, ok); react(ok); renderQuiz();
     });
     const det = app.querySelector("details.expl");
     if (det) det.ontoggle = () => { S.settings.openExpl = det.open; store.save(); };
@@ -585,12 +669,24 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     s.answers[id] = sel;
     renderQuiz();
   }
+  function react(ok) {
+    const s = session, id = s.ids[s.idx];
+    s.streak = ok ? s.streak + 1 : 0;
+    const done = Object.keys(s.checked).length;
+    let r;
+    if (ok && s.streak >= 3 && s.streak % 3 === 0) r = { img: "cheer", text: `連續答對 ${s.streak} 題，手感正熱！` };
+    else if (ok) r = { img: pick(["happy", "wink"]), text: pick(ARALE_OK) };
+    else r = { img: pick(["sad", "explain", "confused"]), text: pick(ARALE_BAD) };
+    if (done === s.ids.length) r = { img: "cheer", text: `這一回 ${s.ids.length} 題全部完成！${ok ? "" : "最後一題雖然沒答對，"}回首頁看看錯題本，把弱點補起來吧。` };
+    s.react[id] = r;
+  }
   function check() {
     const s = session, id = s.ids[s.idx], q = BY_ID.get(id);
     const sel = s.answers[id] || [];
     if (!sel.length || s.checked[id] !== undefined) return;
     const ok = sameSet(sel, q.answer);
     s.checked[id] = ok; record(id, ok);
+    react(ok);
     renderQuiz();
   }
   function go(i) {
@@ -608,6 +704,19 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     s.finished = true; s.timeout = timeout; s.usedSec = Math.round((Math.min(Date.now(), s.deadline) - s.startedAt) / 1000);
     s.ids.forEach(id => { const ok = sameSet(s.answers[id] || [], BY_ID.get(id).answer); s.checked[id] = ok; record(id, ok); });
     renderResult();
+  }
+  function allanResult(s, pct, pass) {
+    const rate = t => { const ids = s.ids.filter(id => BY_ID.get(id).type === t); return ids.length ? Math.round(ids.filter(id => s.checked[id]).length / ids.length * 100) : null; };
+    const sr = rate("single"), mr = rate("multi");
+    const scen = s.ids.filter(id => splitStem(BY_ID.get(id).stem).context);
+    const scr = scen.length ? Math.round(scen.filter(id => s.checked[id]).length / scen.length * 100) : null;
+    const blank = s.ids.filter(id => !(s.answers[id] || []).length).length;
+    const lines = [`本次得分 ${pct}%，${pass ? "已達及格標準。" : "尚未達及格標準。"}${sr !== null ? `單選正確率 ${sr}%` : ""}${mr !== null ? `，複選正確率 ${mr}%` : ""}${scr !== null ? `，情境題正確率 ${scr}%` : ""}。`];
+    if (mr !== null && sr !== null && mr + 15 < sr) lines.push("複選題明顯拉低分數。複選題必須全對才給分，檢討時請把每個選項都說出「為什麼對、為什麼錯」，不要只記答案組合。");
+    if (scr !== null && scr < 60) lines.push("情境題是主導稽核員考試的重點。建議先抓題目最後的提問，再回到情境中找出事實、對應的條文與要求，練習用「稽核準則－客觀證據－不符合敘述」三段式思考。");
+    if (blank) lines.push(`有 ${blank} 題未作答。空白一定不得分，時間分配上請保留最後 10 分鐘把所有題目填完。`);
+    lines.push(pass ? "建議再做一到兩回不同題目的模擬考，確認成績穩定在及格線以上，再安排正式考試。" : "請先完成錯題檢討，再用「錯題複習」把錯題練到全對，之後再做一次模擬考。");
+    return `<div class="coach allan" style="margin-top:0;border-top:0;padding-top:0"><img class="ava" src="img/chars/allan-${pass ? "laugh" : "point"}.jpg" alt="Allan Lo"><div><div class="who">Allan Lo 顧問 <small>· 成績檢討</small></div><div class="say">${esc(lines.join("\n"))}</div></div></div>`;
   }
   function renderResult() {
     const s = session;
@@ -629,6 +738,12 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
               <button class="btn ghost" id="toHome" type="button">回首頁</button>
             </div>
           </div>
+        </div>
+        <div class="result-coaches">
+          ${araleSay(pass
+            ? { img: "cheer", text: `恭喜通過！${pct}% 超過及格線 ${s.passPct}%，正式考試也這樣穩穩拿下！` }
+            : { img: "explain", text: `這次 ${pct}%，離及格線還差 ${s.passPct - pct}%。先按「檢討錯題」跟著 Allan 顧問一題一題看，下次一定可以！` })}
+          ${allanResult(s, pct, pass)}
         </div>
         <h2>作答明細</h2>
         <div class="review">${s.ids.map((id, i) => {

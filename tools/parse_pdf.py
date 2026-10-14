@@ -140,6 +140,17 @@ if __name__ == "__main__":
     if os.path.exists(extra):
         with open(extra, encoding="utf-8") as f:
             qs += [q for q in json.load(f) if not q.get("duplicateOf")]
+    # 合併 Allan Lo 顧問講解（AI 協助撰寫初稿，doubt 為答案疑義註記）
+    allan = os.path.join(os.path.dirname(os.path.abspath(__file__)), "allan_explanations.json")
+    if os.path.exists(allan):
+        with open(allan, encoding="utf-8") as f:
+            notes = {n["id"]: n for n in json.load(f)}
+        for q in qs:
+            n = notes.get(q["id"])
+            if n:
+                q["allan"] = n["explain"].strip()
+                if n.get("doubt", "").strip():
+                    q["allanDoubt"] = n["doubt"].strip()
     with open(os.path.join(out, "questions.json"), "w", encoding="utf-8") as f:
         json.dump(qs, f, ensure_ascii=False, indent=1)
     # questions.js 讓網站以 file:// 直接開啟時也能載入題庫
