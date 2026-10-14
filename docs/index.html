@@ -260,7 +260,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
 <script>
 (() => {
   const QS = (window.QUESTIONS || []).slice().sort((a, b) => a.id - b.id);
+  QS.forEach((q, i) => { q.seq = i + 1; });
   const BY_ID = new Map(QS.map(q => [q.id, q]));
+  const BY_SEQ = new Map(QS.map(q => [q.seq, q]));
   const STORE_KEY = "iso27001la.v1";
   const app = document.getElementById("app");
 
@@ -300,9 +302,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
   /* ---------- 工具 ---------- */
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const typeLabel = q => q.type === "multi" ? `複選題・選 ${q.answer.length} 項` : q.type === "match" ? "配對題・看圖自評" : "單選題";
+  const typeLabel = q => q.type === "multi" ? `複選題・選 ${q.answer.length} 項` : q.type === "match" ? (q.answerText ? "排序／配對題・自評" : "配對題・看圖自評") : "單選題";
   const fmtTime = s => { s = Math.max(0, s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
-  const qLabel = q => q.source === "IRCA" ? `IRCA #${q.no}` : `V15 #${q.id}`;
+  const qLabel = q => `題庫 #${q.seq}`;
   /* ---------- 角色台詞 ---------- */
   const pick = a => a[Math.floor(Math.random() * a.length)];
   const fill = (t, v) => t.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? "");
@@ -476,9 +478,9 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
       if (!kw) return;
       const f = typeFilter();
       let ids;
-      if (/^\d+$/.test(kw) && BY_ID.has(+kw)) {
+      if (/^\d+$/.test(kw) && BY_SEQ.has(+kw)) {
         ids = QS.map(q => q.id);
-        startPractice(ids, "依序練習", "seq", ids.indexOf(+kw));
+        startPractice(ids, "依序練習", "seq", +kw - 1);
       } else {
         const k = kw.toLowerCase();
         ids = QS.filter(q => f(q) && (q.stem + " " + q.options.map(o => o.text).join(" ") + " " + q.explanation).toLowerCase().includes(k)).map(q => q.id);
@@ -584,7 +586,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
     let matchBlock = "";
     if (q.type === "match" && !isExam) {
       matchBlock = checked || s.revealMatch === id
-        ? `<div class="verdict neutral"><b>參考答案</b>${q.answerText ? `<span class="answer-text">${esc(q.answerText)}</span>` : `<span>請比對你的配對結果，再選擇自評。</span>`}</div><div class="figs" style="margin-top:12px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 參考答案" loading="lazy">`).join("")}</div>
+        ? `<div class="verdict neutral"><b>參考答案</b>${q.answerText ? `<span class="answer-text">${esc(q.answerText)}</span>` : `<span>請比對你的配對結果，再選擇自評。</span>`}</div>${q.answerText ? "" : `<div class="figs" style="margin-top:12px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 參考答案" loading="lazy">`).join("")}</div>`}
            ${checked ? `<div class="verdict ${s.checked[id] ? "ok" : "bad"}"><b>自評：${s.checked[id] ? "答對" : "答錯"}</b></div>` : `<div class="actions"><button class="btn" data-self="1" type="button">我答對了</button><button class="btn danger" data-self="0" type="button">我答錯了</button></div>`}`
         : `<div class="actions" style="margin-top:0"><button class="btn ghost" id="revealMatch" type="button">顯示參考答案</button><span class="note">先在紙上或心中完成配對，再看答案。</span></div>`;
     }
@@ -594,8 +596,8 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
       ? (s.checked[id] ? { img: "happy", text: "這題你答對了！再看一下 Allan 顧問整理的重點，觀念會更扎實。" } : { img: "explain", text: "這題沒答對，仔細看看 Allan 顧問的講解，弄懂每個選項錯在哪裡。" })
       : araleTip(q, s));
     const expl = shown
-      ? allanSay(q, myOk) + `<details class="expl" ${S.settings.openExpl ? "open" : ""}><summary>${q.source === "IRCA" ? "題目來源說明" : "題庫原文解析（英文）"}</summary><div class="body">${q.explanation ? esc(q.explanation) : "本題題庫未附解析。"}</div></details>`
-        + (q.type !== "match" && q.answerImages.length ? `<details class="expl"><summary>原始題目截圖</summary><div class="figs" style="margin-top:8px">${q.answerImages.map(src => `<img src="img/${esc(src)}" alt="${esc(qLabel(q))} 原始截圖" loading="lazy">`).join("")}</div></details>` : "") : "";
+      ? allanSay(q, myOk) + (q.source === "IRCA" && !q.explanation ? "" : `<details class="expl" ${S.settings.openExpl ? "open" : ""}><summary>${q.source === "IRCA" ? "補充說明" : "題庫原文解析（英文）"}</summary><div class="body">${q.explanation ? esc(q.explanation) : "本題題庫未附解析。"}</div></details>`)
+ : "";
 
     const last = s.idx === s.ids.length - 1;
     const primary = isExam
@@ -609,7 +611,7 @@ h2 { font-family: var(--f-display); font-size: 20px; margin: 28px 0 12px; }
         <aside class="index ${innerWidth <= 760 ? "collapsed" : ""}" id="index">
           <h4><span>${esc(s.title)}</span><span>${doneCount}/${s.ids.length}</span></h4>
           <button class="chip-btn drawer-toggle" id="drawer" type="button">題號清單</button>
-          <div class="grid">${s.ids.map((x, i) => `<button class="${cellClass(x, i)}" data-i="${i}" type="button" title="${esc(qLabel(BY_ID.get(x)))}">${BY_ID.get(x).source === "IRCA" ? "I" + BY_ID.get(x).no : x}</button>`).join("")}</div>
+          <div class="grid">${s.ids.map((x, i) => `<button class="${cellClass(x, i)}" data-i="${i}" type="button" title="${esc(qLabel(BY_ID.get(x)))}">${BY_ID.get(x).seq}</button>`).join("")}</div>
           <div class="legend">${isExam ? `<span><i style="background:var(--sunk)"></i>已作答</span>` : `<span><i style="background:var(--ok-soft);border-color:var(--ok)"></i>答對</span><span><i style="background:var(--bad-soft);border-color:var(--bad)"></i>答錯</span>`}<span><i style="background:var(--warn);border-color:var(--warn);border-radius:50%"></i>標記</span></div>
           ${isExam ? `<div style="margin-top:12px"><button class="btn" id="submitExam2" type="button" style="width:100%">交卷</button></div>` : s.finished ? `<div style="margin-top:12px"><button class="btn ghost" id="backResult" type="button" style="width:100%">回到成績</button></div>` : ""}
         </aside>

@@ -26,7 +26,7 @@
    "A",
    "B"
   ],
-  "explanation": "IRCA 模擬試題第 1 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_01.jpg"
@@ -69,7 +69,7 @@
    "D",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 2 題，答案依原檔標記。\n原檔答案標記於英文版畫面（Training staff、Providing ICT assets、Retaining documentation），已對應至中文選項。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#295",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 295 題",
   "images": [],
   "answerImages": [
    "irca_02.jpg"
@@ -83,7 +83,7 @@
   "stem": "以下選項顯示第三方稽核中涉及的關鍵措施。然而，它們的順序並不正確。請依據進行第三方稽核時應的順序，在表格中進行排序。這些階段將發生在驗證申請後。\n\n待排序項目：\n・任命稽核組長\n・審查驗證申請書\n・文件審查\n・申請驗證\n・進行稽核\n・頒發證書",
   "options": [],
   "answer": [],
-  "explanation": "IRCA 模擬試題第 3 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_03.jpg"
@@ -117,7 +117,7 @@
   "answer": [
    "C"
   ],
-  "explanation": "IRCA 模擬試題第 4 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_04.jpg"
@@ -150,7 +150,7 @@
   "answer": [
    "C"
   ],
-  "explanation": "IRCA 模擬試題第 5 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_05.jpg"
@@ -192,7 +192,7 @@
    "B",
    "F"
   ],
-  "explanation": "IRCA 模擬試題第 6 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_06.jpg"
@@ -235,7 +235,7 @@
    "C",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 7 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_07.jpg"
@@ -293,7 +293,7 @@
    "G",
    "I"
   ],
-  "explanation": "IRCA 模擬試題第 8 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#125",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 125 題",
   "images": [],
   "answerImages": [
    "irca_08.jpg"
@@ -336,7 +336,7 @@
    "D",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 9 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#88、#232",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 88 題、第 232 題",
   "images": [],
   "answerImages": [
    "irca_09.jpg"
@@ -350,7 +350,7 @@
   "stem": "ISO 19011 要求得確定每次稽核與稽核方案的相關風險。在以遠距(視訊)稽核的情況下，請配對過程與其相關風險。\n\n描述：\n1. 網路連線失敗\n2. 稽核小組整體能力不足\n3. 未能設定相關的稽核目標、範圍和準則\n4. 未能建立抽樣相關的規範\n5. 允許的稽核時間和資訊科技相關資源都不足\n6. 稽核員和受稽核方之間缺乏協調\n\n可選項目：抽樣過程、溝通過程、稽核活動、稽核規劃、資源分配、選擇稽核小組的成員",
   "options": [],
   "answer": [],
-  "explanation": "IRCA 模擬試題第 10 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_10.jpg"
@@ -365,7 +365,7 @@
   "stem": "稽核員收集資訊是稽核過程的重要活動，並且是決定稽核發現的一種方式。請按照正確的順序，列出稽核員應如何完成此過程。\n\n待排序項目：\n・審閱\n・根據稽核準則進行評估\n・稽核發現\n・稽核證據\n（第 1、2、7 步為題目已給定，需填入第 3–6 步。）",
   "options": [],
   "answer": [],
-  "explanation": "IRCA 模擬試題第 11 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_11.jpg"
@@ -381,7 +381,7 @@
   "stem": "稽核員需要與受稽核方進行有效溝通。因此個人行為是確保稽核成功所需要的關鍵特質。請將下面列出這些特質，與相關的簡短描述相互匹配。\n\n描述：\n1. 公平、誠實、真誠、誠實、謹慎\n2. 願意從情境中進行學習\n3. 處理與人的關係時表現得體\n4. 主動地察覺實際周遭情況與活動\n\n可選項目：具外交手腕、具道德觀、觀察敏銳、願意改進",
   "options": [],
   "answer": [],
-  "explanation": "IRCA 模擬試題第 12 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_12.jpg"
@@ -426,7 +426,7 @@
    "B",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 13 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#11、#238",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 11 題、第 238 題",
   "images": [],
   "answerImages": [
    "irca_13.jpg"
@@ -469,7 +469,7 @@
    "D",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 14 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#120",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 120 題",
   "images": [],
   "answerImages": [
    "irca_14.jpg"
@@ -512,7 +512,7 @@
    "C",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 15 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#270",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 270 題",
   "images": [],
   "answerImages": [
    "irca_15.jpg"
@@ -555,7 +555,7 @@
    "D",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 16 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#31",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 31 題",
   "images": [],
   "answerImages": [
    "irca_16.jpg"
@@ -588,7 +588,7 @@
   "answer": [
    "B"
   ],
-  "explanation": "IRCA 模擬試題第 17 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#361",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 361 題",
   "images": [],
   "answerImages": [
    "irca_17.jpg"
@@ -629,7 +629,7 @@
   "answer": [
    "C"
   ],
-  "explanation": "IRCA 模擬試題第 18 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_18.jpg"
@@ -680,7 +680,7 @@
    "E",
    "F"
   ],
-  "explanation": "IRCA 模擬試題第 19 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_19.jpg"
@@ -732,7 +732,7 @@
    "C",
    "D"
   ],
-  "explanation": "IRCA 模擬試題第 20 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_20.jpg"
@@ -784,7 +784,7 @@
    "G",
    "H"
   ],
-  "explanation": "IRCA 模擬試題第 21 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_21.jpg"
@@ -835,7 +835,7 @@
    "F",
    "H"
   ],
-  "explanation": "IRCA 模擬試題第 22 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_22.jpg"
@@ -887,7 +887,7 @@
    "G",
    "H"
   ],
-  "explanation": "IRCA 模擬試題第 23 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_23.jpg"
@@ -939,7 +939,7 @@
    "E",
    "F"
   ],
-  "explanation": "IRCA 模擬試題第 24 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_24.jpg"
@@ -981,7 +981,7 @@
    "A",
    "D"
   ],
-  "explanation": "IRCA 模擬試題第 25 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_25.jpg"
@@ -1032,7 +1032,7 @@
    "C",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 26 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_26.jpg"
@@ -1083,7 +1083,7 @@
    "B",
    "C"
   ],
-  "explanation": "IRCA 模擬試題第 27 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_27.jpg"
@@ -1135,7 +1135,7 @@
    "E",
    "F"
   ],
-  "explanation": "IRCA 模擬試題第 28 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_28.jpg"
@@ -1187,7 +1187,7 @@
    "C",
    "H"
   ],
-  "explanation": "IRCA 模擬試題第 29 題，答案依原檔標記。\n原檔僅標記三項；「關於資訊安全服務交付過程，我們不進行任何評估」未標記，但依 9.1 亦可能被視為不符合，作答時請自行判斷。",
+  "explanation": "題庫答案為三項；「關於資訊安全服務交付過程，我們不進行任何評估」未列入答案，但依 9.1 亦可能被視為不符合，作答時請自行判斷。",
   "images": [],
   "answerImages": [
    "irca_29.jpg"
@@ -1238,7 +1238,7 @@
    "C",
    "G"
   ],
-  "explanation": "IRCA 模擬試題第 30 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_30.jpg"
@@ -1289,7 +1289,7 @@
    "G",
    "H"
   ],
-  "explanation": "IRCA 模擬試題第 31 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_31.jpg"
@@ -1331,7 +1331,7 @@
    "B",
    "E"
   ],
-  "explanation": "IRCA 模擬試題第 32 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_32.jpg"
@@ -1383,7 +1383,7 @@
    "F",
    "G"
   ],
-  "explanation": "IRCA 模擬試題第 33 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#38",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 38 題",
   "images": [],
   "answerImages": [
    "irca_33.jpg"
@@ -1416,7 +1416,7 @@
   "answer": [
    "A"
   ],
-  "explanation": "IRCA 模擬試題第 34 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_34.jpg"
@@ -1457,7 +1457,7 @@
   "answer": [
    "A"
   ],
-  "explanation": "IRCA 模擬試題第 35 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#258、#214、#99",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 258 題、第 214 題、第 99 題",
   "images": [],
   "answerImages": [
    "irca_35.jpg"
@@ -1471,7 +1471,7 @@
   "stem": "你是一位經驗豐富的第三方稽核組長，正在引導培訓中的稽核員。她要求你確認以下每個資訊安全控制措施，並且列入她的最終報告中，應根據 ISO/IEC 27002:2022 的四個控制主題，記錄每個資訊安全控制措施。\n請將下列每個控制項與其所屬的控制項主題做類別配對：\n\n描述：\n1. 應管理對外部網站的訪問，以減少惡意內容的暴露。\n2. 應根據組織的需要、定義和分配資訊安全角色和職責。\n3. 組織應提供一種機制，讓人員透過適當的管道，可及時報告觀察到或可疑的資訊安全事件。\n4. 應制定並適當執行紙張和移動硬碟的桌面淨空規則，以及資訊處理設施的螢幕淨空規則。\n\n可選項目：人員控制、實體控制、技術控制、組織控制",
   "options": [],
   "answer": [],
-  "explanation": "IRCA 模擬試題第 36 題，答案依原檔標記。",
+  "explanation": "",
   "images": [],
   "answerImages": [
    "irca_36.jpg"
@@ -1509,7 +1509,7 @@
   "answer": [
    "C"
   ],
-  "explanation": "IRCA 模擬試題第 37 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#367、#151",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 367 題、第 151 題",
   "images": [],
   "answerImages": [
    "irca_37.jpg"
@@ -1546,7 +1546,7 @@
   "answer": [
    "C"
   ],
-  "explanation": "IRCA 模擬試題第 38 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#57、#231",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 57 題、第 231 題",
   "images": [],
   "answerImages": [
    "irca_38.jpg"
@@ -1598,7 +1598,7 @@
    "F",
    "H"
   ],
-  "explanation": "IRCA 模擬試題第 39 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#349",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 349 題",
   "images": [],
   "answerImages": [
    "irca_39.jpg"
@@ -1650,7 +1650,7 @@
    "E",
    "F"
   ],
-  "explanation": "IRCA 模擬試題第 40 題，答案依原檔標記。\nV15.35 題庫中的相似題（情境或選項相近、但問法不同）：#225",
+  "explanation": "相似題（情境或選項相近、但問法不同）：第 225 題",
   "images": [],
   "answerImages": [
    "irca_40.jpg"
